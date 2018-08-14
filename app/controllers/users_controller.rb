@@ -1,7 +1,11 @@
 class UsersController < ApplicationController
 	
 	get '/signup' do
-		erb :'registration/signup'
+		if logged_in?
+			redirect to '/'
+		else
+			erb :'registration/signup'
+		end
 	end
 	
 	post '/signup' do
