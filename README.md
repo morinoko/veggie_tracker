@@ -7,8 +7,8 @@ This is a simple ruby app that will allow you to keep track of what vegetables y
 - [x] Set up database tables
 - [x] Set up models and class associations
 - [x] Allow users to create an account
-- [ ] Allow users to login
-- [ ] Allow users to logout
+- [x] Allow users to login
+- [x] Allow users to logout
 
 - [ ] Users can create a farm
 - [ ] Users can edit or delete a farm
