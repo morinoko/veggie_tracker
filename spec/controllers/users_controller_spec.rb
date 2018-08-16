@@ -1,6 +1,7 @@
 require 'spec_helper'
 
 RSpec.describe UsersController, :type => :controller do
+  
   describe "Signup Page" do
     
     it "loads the signup page" do
@@ -69,6 +70,7 @@ RSpec.describe UsersController, :type => :controller do
   end
   
   describe "Logging out" do
+    
     it 'redirects user to the homepage' do
       get '/logout'
       
@@ -76,5 +78,26 @@ RSpec.describe UsersController, :type => :controller do
       expect(last_request.path).to eq('/')
       expect(last_response.body).to include("Login")
     end
+  end
+  
+  describe "Signing in" do
+    
+    context "successful sign in" do
+      it 'redirects user to homepage' do
+        user = User.create(:username => "Ria", :email => "ria@aol.com", :password => "meow")
+        
+        params = {
+          :username => "Ria",
+          :password => "meow"
+        }
+        
+        post '/login', params
+        
+        follow_redirect!
+        expect(last_request.path).to eq('/')
+        expect(last_response.body).to include("Welcome, Ria!")
+      end
+    end
+    
   end
 end
