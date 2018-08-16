@@ -14,6 +14,8 @@ gem 'pry'
 gem 'tux'
 
 group :test do
+  gem 'rack-test'
 	gem 'rspec'
 	gem 'capybara'
+	gem 'database_cleaner'
 end
