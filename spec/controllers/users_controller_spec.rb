@@ -81,6 +81,9 @@ RSpec.describe UsersController, :type => :controller do
   end
   
   describe "Signing in" do
+    before do
+      @user = User.create(:username => "Ria", :email => "ria@aol.com", :password => "meow")
+    end
     
     context "logged out" do
       it "loads the login page" do
@@ -93,8 +96,6 @@ RSpec.describe UsersController, :type => :controller do
     
     context "logged in" do
       it "redirects user to their dashboard" do
-        user = User.create(:username => "Ria", :email => "ria@aol.com", :password => "meow")
-        
         params = {
           :username => "Ria",
           :password => "meow"
@@ -111,8 +112,6 @@ RSpec.describe UsersController, :type => :controller do
     
     context "successful sign in" do
       it 'redirects user to their dashboard' do
-        user = User.create(:username => "Ria", :email => "ria@aol.com", :password => "meow")
-        
         params = {
           :username => "Ria",
           :password => "meow"
@@ -128,8 +127,6 @@ RSpec.describe UsersController, :type => :controller do
     
     context "unsuccessful sign in" do
       it "does not user sign in with wrong username" do
-        user = User.create(:username => "Ria", :email => "ria@aol.com", :password => "meow")
-        
         params = {
           :username => "Ria_xyz",
           :password => "meow"
@@ -141,8 +138,6 @@ RSpec.describe UsersController, :type => :controller do
       end
       
       it "does not user sign in with wrong password" do
-        user = User.create(:username => "Ria", :email => "ria@aol.com", :password => "meow")
-        
         params = {
           :username => "Ria",
           :password => "meow_oops"
