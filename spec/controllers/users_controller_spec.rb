@@ -22,12 +22,12 @@ RSpec.describe UsersController, :type => :controller do
         post '/signup', params
         expect(last_response.redirect?).to be_truthy
         follow_redirect!
-        expect(last_request.path).to eq('/')
+        expect(last_request.path).to eq('/users/rider')
         expect(last_response.body).to include("Welcome Rider!")
       end
     end
     
-    context "unsucessful signup" do
+    context "unsuccessful signup" do
       it "does not let user signup without a username" do
         params = {
           :username => "",
@@ -82,8 +82,35 @@ RSpec.describe UsersController, :type => :controller do
   
   describe "Signing in" do
     
+    context "logged out" do
+      it "loads the login page" do
+        get '/login'
+        
+        expect(last_response.status).to eq(200)
+        expect(last_request.path).to eq('/login')
+      end
+    end
+    
+    context "logged in" do
+      it "redirects user to their dashboard" do
+        user = User.create(:username => "Ria", :email => "ria@aol.com", :password => "meow")
+        
+        params = {
+          :username => "Ria",
+          :password => "meow"
+        }
+        
+        post '/login', params
+        
+        get '/login'
+        
+        follow_redirect!
+        expect(last_request.path).to eq('/users/ria')
+      end
+    end
+    
     context "successful sign in" do
-      it 'redirects user to homepage' do
+      it 'redirects user to their dashboard' do
         user = User.create(:username => "Ria", :email => "ria@aol.com", :password => "meow")
         
         params = {
@@ -94,7 +121,7 @@ RSpec.describe UsersController, :type => :controller do
         post '/login', params
         
         follow_redirect!
-        expect(last_request.path).to eq('/')
+        expect(last_request.path).to eq('/users/ria')
         expect(last_response.body).to include("Welcome, Ria!")
       end
     end
@@ -136,7 +163,7 @@ RSpec.describe UsersController, :type => :controller do
       get '/users/ria'
       
       expect(last_response.status).to eq(200)
-      expect(last_response.body).to include("Dashboard")
+      expect(last_response.body).to include("Ria's Dashboard")
     end
     
   end
