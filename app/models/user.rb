@@ -7,7 +7,7 @@ class User < ActiveRecord::Base
 	validates :email, uniqueness: true
 	
 	def slug
-  	self.username.downcase.gsub(" ", "-")
+  	self.username.downcase.gsub(" ", "-").gsub("'", "")
   end
   
   def self.find_by_slug(slug)
