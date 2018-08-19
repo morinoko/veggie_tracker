@@ -17,6 +17,10 @@ class UsersController < ApplicationController
       session[:user_id] = @user.id
 
       redirect to "/users/#{@user.slug}"
+    elsif User.find_by(email: params[:email])
+       flash[:notice] = "This email is already taken."
+       
+       redirect to '/signup'
     else
       flash[:notice] = "Looks like something went wrong. Try the form again."
 
