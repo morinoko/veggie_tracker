@@ -1,10 +1,10 @@
 RSpec.describe 'User' do
   before do
-    @user = User.create(:username => "Joe Farmer", :email => "joe@aol.com", :password => "farmer")
+    @user = User.create(username: "Joe Farmer", email: "joe@aol.com", password: "farmer")
   end
   
   it "can make a slug from own username" do
-    expect(@user.slug).to eq("joe-farmer")  
+    expect(@user.slug).to eq("joe-farmer")
   end
   
   it "can find a user with the slug" do
