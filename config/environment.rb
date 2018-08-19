@@ -9,6 +9,9 @@ Bundler.require(:default, ENV['SINATRA_ENV'])
 # 	:database => "db/#{ENV['SINATRA_ENV']}.sqlite"
 # )
 
-set :database_file, 'database.yml'
+#set :database_file, 'database.yml'
+
+ActiveRecord::Base.establish_connection(ENV['DATABASE_URL'] || "db/#{ENV['SINATRA_ENV']}.sqlite")
+
 
 require_all 'app'
