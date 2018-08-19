@@ -125,7 +125,20 @@ RSpec.describe UsersController, :type => :controller do
         
         expect(last_response.location).to include('/login')
       end
-
     end
   end
+  
+  describe "User show page" do
+    
+    it "loads the user show page" do
+      user = User.create(:username => "Ria", :email => "ria@aol.com", :password => "meow")
+      
+      get '/users/ria'
+      
+      expect(last_response.status).to eq(200)
+      expect(last_response.body).to include("Dashboard")
+    end
+    
+  end
+  
 end
