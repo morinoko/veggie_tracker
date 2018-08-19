@@ -22,10 +22,9 @@
           <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
             <div class="navbar-nav">
 	            <% if logged_in? %>
-	            	<a class="nav-item nav-link" href="#"><%= current_user.username %></a>
+	            	<a class="nav-item nav-link" href="/users/<%= current_user.slug %>">My Dashboard</a>
                 <a class="nav-item nav-link" href="/logout">Logout</a>
-              <% end %>
-              <% if !logged_in? %>
+              <% else %>
 	            	<a class="nav-item nav-link" href="/signup">Signup</a>
                 <a class="nav-item nav-link" href="/login">Login</a>
               <% end %>
