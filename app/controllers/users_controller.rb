@@ -16,7 +16,7 @@ class UsersController < ApplicationController
 
       session[:user_id] = @user.id
 
-      redirect to '/'
+      redirect to "/users/#{@user.slug}"
     else
       flash[:notice] = "Looks like something went wrong. Try the form again."
 
@@ -26,7 +26,7 @@ class UsersController < ApplicationController
 
   get '/login' do
     if logged_in?
-      redirect to '/' #TODO change to user page
+      redirect to "/users/#{current_user.slug}"
     else
       erb :'sessions/login'
     end
@@ -39,7 +39,7 @@ class UsersController < ApplicationController
       session[:user_id] = @user.id
       flash[:notice] = "Welcome, #{@user.username}!"
 
-      redirect to '/' #TODO change to user page
+      redirect to "/users/#{@user.slug}"
     else
       flash[:notice] = "Your username or password was incorrect! Please try again."
 
@@ -54,5 +54,11 @@ class UsersController < ApplicationController
     else
       redirect to '/'
     end
+  end
+  
+  get '/users/:slug' do
+    @user = User.find_by_slug(params[:slug])
+    
+    erb :'users/show'
   end
 end
