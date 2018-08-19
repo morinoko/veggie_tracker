@@ -99,5 +99,33 @@ RSpec.describe UsersController, :type => :controller do
       end
     end
     
+    context "unsuccessful sign in" do
+      it "does not user sign in with wrong username" do
+        user = User.create(:username => "Ria", :email => "ria@aol.com", :password => "meow")
+        
+        params = {
+          :username => "Ria_xyz",
+          :password => "meow"
+        }
+        
+        post '/login', params
+        
+        expect(last_response.location).to include('/login')
+      end
+      
+      it "does not user sign in with wrong password" do
+        user = User.create(:username => "Ria", :email => "ria@aol.com", :password => "meow")
+        
+        params = {
+          :username => "Ria",
+          :password => "meow_oops"
+        }
+        
+        post '/login', params
+        
+        expect(last_response.location).to include('/login')
+      end
+
+    end
   end
 end
