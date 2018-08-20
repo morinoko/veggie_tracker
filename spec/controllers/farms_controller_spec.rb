@@ -52,4 +52,8 @@ RSpec.describe FarmsController, :type => :controller do
     end
   end
   
+  describe "creating a new farm" do
+    #test farm create form and redirect to farm page
+  end
+  
 end

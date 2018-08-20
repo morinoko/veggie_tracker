@@ -10,8 +10,19 @@ class FarmsController < ApplicationController
     end
   end
   
-  post '/farm' do
+  post '/farms' do
+    @farm = Farm.new(name: params[:name], location: params[:location])
     
+    if @farm.save
+      @farm.user = current_user
+      @farm.save
+      
+      redirect to "/farms/#{@farm.slug}"
+    else
+      flash[:notice] = "Please fill in all the fields."
+      
+      redirect to '/farms/new'
+    end
   end
   
   get '/farms/:slug' do
