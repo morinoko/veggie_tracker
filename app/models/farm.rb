@@ -1,6 +1,7 @@
 class Farm < ActiveRecord::Base
 	belongs_to :user
 	has_many :vegetables
+	validates :name, :location, presence: true
 	
 	def slug
   	name.downcase.gsub(" ", "-").gsub("'", "")
