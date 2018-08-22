@@ -31,13 +31,22 @@ class FarmsController < ApplicationController
     erb :'farms/show'
   end
   
+  patch '/farms/:slug' do
+    @farm = Farm.find_by_slug(params[:slug])
+    
+    @farm.update(name: params[:name], location: params[:location])
+    
+    redirect to "/farms/#{@farm.slug}"
+  end
+  
   get '/farms/:slug/edit' do
     @farm = Farm.find_by_slug(params[:slug])
     
-    if current_user == @farm.user
+    if logged_in? && current_user == @farm.user
       erb :'farms/edit'
     else
       redirect to '/'
     end
   end
+  
 end

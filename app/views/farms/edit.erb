@@ -1,5 +1,7 @@
 <h1>Edit farm</h1>
-<form method="POST" action="/farms/<%= @farm.slug %>/edit">
+<form method="POST" action="/farms/<%= @farm.slug %>">
+  <input type="hidden" id="hidden" name="_method" value="patch">
+  
   <div class="form-group">
 		<label for="name">Name of the Farm</label>
 		<input type="text" id="name" name="name" class="form-control" value="<%= @farm.name %>">
