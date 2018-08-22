@@ -49,6 +49,28 @@ RSpec.describe FarmsController, :type => :controller do
   
   describe "creating a new farm" do
     #test farm create form and redirect to farm page
+    it "lets user create a new farm" do
+      user = User.create(username: "Ria", email: "ria@gmail.com", password: "meow")
+      
+      visit '/login'
+      
+      fill_in(:username, with: "Ria")
+      fill_in(:password, with: "meow")
+      click_button 'submit'
+      
+      visit '/farms/new'
+      
+      fill_in(:name, with: "My Farm")
+      fill_in(:location, with: "Catland")
+      click_button 'submit'
+      
+      farm = Farm.find_by(name: "My Farm")
+      expect(farm).to be_instance_of(Farm)
+      expect(farm.user_id).to eq(user.id)
+      
+      visit "/farms/#{farm.slug}"
+      expect(page.status_code).to eq(200)
+    end
   end
   
 end
