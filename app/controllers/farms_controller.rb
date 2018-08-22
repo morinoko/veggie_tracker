@@ -30,4 +30,14 @@ class FarmsController < ApplicationController
     
     erb :'farms/show'
   end
+  
+  get '/farms/:slug/edit' do
+    @farm = Farm.find_by_slug(params[:slug])
+    
+    if current_user == @farm.user
+      erb :'farms/edit'
+    else
+      redirect to '/'
+    end
+  end
 end
