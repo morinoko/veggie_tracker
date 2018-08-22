@@ -92,8 +92,8 @@ RSpec.describe FarmsController, :type => :controller do
         fill_in(:location, with: "Catlandia")
         click_button 'save'
         
-        expect(@farm.name).to eq("Cattail Farm Edited")
-        expect(@farm.location).to eq("Catlandia")
+        expect(Farm.find_by(name: "Cattail Farm Edited")).to be_instance_of(Farm)
+        expect(Farm.find_by(name: "Cattail Farm")).to eq(nil)
       end
     end
     
@@ -102,7 +102,7 @@ RSpec.describe FarmsController, :type => :controller do
         get '/logout'
         get "/farms/#{@farm.slug}/edit"
         
-        expect(last_response.location).to include("/login")
+        expect(last_response.location).to include("/")
       end
     end
   end
