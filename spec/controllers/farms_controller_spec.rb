@@ -107,5 +107,22 @@ RSpec.describe FarmsController, :type => :controller do
     end
   end
 
+  describe "deleting a farm" do
+    it "lets users delete a farm" do
+      @user = User.create(username: "Ria", email: "ria@gmail.com", password: "meow")
+      @farm = Farm.create(name: "Cattail Farm", location: "Ohio", user_id: @user.id)
+      
+      visit '/login'
+      
+      fill_in(:username, with: "Ria")
+      fill_in(:password, with: "meow")
+      click_button 'submit'
+      
+      visit "/farms/#{@farm.slug}/edit"
+      
+      click_button 'delete'
+      expect(Farm.find_by(name: "Cattail Farm")).to eq(nil)
+    end
+  end
   
 end
