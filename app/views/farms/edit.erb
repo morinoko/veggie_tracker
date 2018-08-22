@@ -1,0 +1,14 @@
+<h1>Edit farm</h1>
+<form method="POST" action="/farms/<%= @farm.slug %>/edit">
+  <div class="form-group">
+		<label for="name">Name of the Farm</label>
+		<input type="text" id="name" name="name" class="form-control" value="<%= @farm.name %>">
+	</div>
+	
+	<div class="form-group">
+		<label for="location">Location</label>
+		<input type="text" id="location" name="location" class="form-control" value="<%= @farm.location %>">
+	</div>
+	
+	<button type="submit" id="save" class="btn btn-primary">Save</button>
+</form>
