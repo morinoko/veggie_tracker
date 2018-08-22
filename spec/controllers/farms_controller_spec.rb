@@ -18,36 +18,31 @@ RSpec.describe FarmsController, :type => :controller do
     end  
   end
   
-  describe "farm create page" do
+  describe "new farm page" do
     before do
       @user = User.create(username: "Ria", email: "ria@gmail.com", password: "meow")
     end
     
     context "logged in" do
       it "loads the new farm form" do
-        params = {
-          :username => "Ria",
-          :password => "meow"
-        }
+        visit '/login'
         
-        post '/login', params
+        fill_in(:username, with: "Ria")
+        fill_in(:password, with: "meow")
+        click_button 'submit'
         
-        get '/farms/new'
+        visit '/farms/new'
         
-        expect(last_response.status).to eq(200)
-        expect(last_response.body).to include("Create a new farm")
+        expect(page.status_code).to eq(200)
+        expect(page.body).to include("Create a new farm")
       end
     end
     
     context "logged out" do
       it "redirects the user to login" do
-        get '/logout'
         get '/farms/new'
         
-        expect(last_response.redirect?).to be_truthy
-        follow_redirect!
-        expect(last_request.path).to eq('/login')
-        expect(last_response.body).to include("You need to be logged in to do that")
+        expect(last_response.location).to include('/login')
       end
     end
   end
