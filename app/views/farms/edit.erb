@@ -14,3 +14,10 @@
 	
 	<button type="submit" id="save" class="btn btn-primary">Save</button>
 </form>
+
+<form method="POST" action="/farms/<%= @farm.slug %>">
+  <input type="hidden" id="hidden" name="_method" value="delete">
+  <div class="form-group">
+		<input type="submit" id="delete" class="btn btn-outline-danger btn-sm" value="Delete farm">
+	</div>
+</form>

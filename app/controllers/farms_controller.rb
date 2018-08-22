@@ -39,6 +39,14 @@ class FarmsController < ApplicationController
     redirect to "/farms/#{@farm.slug}"
   end
   
+  delete '/farms/:slug' do
+    @farm = Farm.find_by_slug(params[:slug])
+    
+    @farm.destroy
+    
+    redirect to "/users/#{@farm.user.slug}"
+  end
+  
   get '/farms/:slug/edit' do
     @farm = Farm.find_by_slug(params[:slug])
     
