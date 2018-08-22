@@ -1,1 +1,10 @@
 <h1><%= @user.username %>'s Dashboard</h1>
+
+<h2>My Farms</h2>
+<ul>
+<% @user.farms.each do |farm| %>
+  <li><a href="/farms/<%= farm.slug %>"><%= farm.name %></a></li>
+<% end %>
+</ul>
+
+<a href="/farms/new" class="btn btn-success">Add a new farm</a>
