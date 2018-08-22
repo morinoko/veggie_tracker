@@ -48,7 +48,6 @@ RSpec.describe FarmsController, :type => :controller do
   end
   
   describe "creating a new farm" do
-    #test farm create form and redirect to farm page
     it "lets user create a new farm" do
       user = User.create(username: "Ria", email: "ria@gmail.com", password: "meow")
       
@@ -72,5 +71,41 @@ RSpec.describe FarmsController, :type => :controller do
       expect(page.status_code).to eq(200)
     end
   end
+  
+  describe "editing a farm" do
+    before do
+      @user = User.create(username: "Ria", email: "ria@gmail.com", password: "meow")
+      @farm = Farm.create(name: "Cattail Farm", location: "Ohio", user_id: @user.id)
+      
+      visit '/login'
+      
+      fill_in(:username, with: "Ria")
+      fill_in(:password, with: "meow")
+      click_button 'submit'
+    end
+    
+    context "logged in" do
+      it "lets user edit a farm" do
+        visit "/farms/#{@farm.slug}/edit"
+        
+        fill_in(:name, with: "Cattail Farm Edited")
+        fill_in(:location, with: "Catlandia")
+        click_button 'save'
+        
+        expect(@farm.name).to eq("Cattail Farm Edited")
+        expect(@farm.location).to eq("Catlandia")
+      end
+    end
+    
+    context "logged out" do
+      it "does not allow logged out user to edit a farm" do
+        get '/logout'
+        get "/farms/#{@farm.slug}/edit"
+        
+        expect(last_response.location).to include("/login")
+      end
+    end
+  end
+
   
 end
