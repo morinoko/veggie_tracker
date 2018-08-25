@@ -17,7 +17,7 @@ class FarmsController < ApplicationController
       @farm.user = current_user
       @farm.save
       
-      redirect to "/farms/#{@farm.slug}"
+      redirect to "/farms/#{@farm.id}/#{@farm.slug}"
     else
       flash[:notice] = "Please fill in all the fields."
       
@@ -25,30 +25,31 @@ class FarmsController < ApplicationController
     end
   end
   
-  get '/farms/:slug' do
-    @farm = Farm.find_by_slug(params[:slug])
+  get '/farms/:id/:slug' do
+    @farm = Farm.find_by(id: params[:id])
     
     erb :'farms/show'
   end
   
-  patch '/farms/:slug' do
-    @farm = Farm.find_by_slug(params[:slug])
+  patch '/farms/:id/:slug' do
+    @farm = Farm.find_by(id: params[:id])
     
     @farm.update(name: params[:name], location: params[:location])
     
-    redirect to "/farms/#{@farm.slug}"
+    redirect to "/farms/#{@farm.id}/#{@farm.slug}"
   end
   
-  delete '/farms/:slug' do
-    @farm = Farm.find_by_slug(params[:slug])
+  delete '/farms/:id/:slug' do
+    @farm = Farm.find_by(id: params[:id])
+    @user = @farm.user
     
     @farm.destroy
     
-    redirect to "/users/#{@farm.user.slug}"
+    redirect to "/users/#{@user.slug}"
   end
   
-  get '/farms/:slug/edit' do
-    @farm = Farm.find_by_slug(params[:slug])
+  get '/farms/:id/:slug/edit' do
+    @farm = Farm.find_by(id: params[:id])
     
     if logged_in? && current_user == @farm.user
       erb :'farms/edit'

@@ -3,7 +3,7 @@
 <h2>My Farms</h2>
 <ul>
 <% @user.farms.each do |farm| %>
-  <li><a href="/farms/<%= farm.slug %>"><%= farm.name %></a></li>
+  <li><a href="/farms/<%= farm.id %>/<%= farm.slug %>"><%= farm.name %></a></li>
 <% end %>
 </ul>
 

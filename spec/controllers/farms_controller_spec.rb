@@ -10,7 +10,7 @@ RSpec.describe FarmsController, :type => :controller do
     end
     
     it "loads the farm page" do
-      get '/farms/cattail-farm'
+      get "/farms/#{@farm.id}/cattail-farm"
       
       expect(last_response.status).to eq(200)
       expect(last_response.body).to include(@farm.name)
@@ -67,7 +67,7 @@ RSpec.describe FarmsController, :type => :controller do
       expect(farm).to be_instance_of(Farm)
       expect(farm.user_id).to eq(user.id)
       
-      visit "/farms/#{farm.slug}"
+      visit "/farms/#{farm.id}/#{farm.slug}"
       expect(page.status_code).to eq(200)
     end
   end
@@ -86,7 +86,7 @@ RSpec.describe FarmsController, :type => :controller do
     
     context "logged in" do
       it "lets user edit a farm" do
-        visit "/farms/#{@farm.slug}/edit"
+        visit "/farms/#{@farm.id}/#{@farm.slug}/edit"
         
         fill_in(:name, with: "Cattail Farm Edited")
         fill_in(:location, with: "Catlandia")
@@ -100,14 +100,14 @@ RSpec.describe FarmsController, :type => :controller do
     context "logged out" do
       it "does not allow logged out user to edit a farm" do
         get '/logout'
-        get "/farms/#{@farm.slug}/edit"
+        get "/farms/#{@farm.id}/#{@farm.slug}/edit"
         
         expect(last_response.location).to include("/")
       end
       
       it "does not show the edit button on the farm page" do
         get '/logout'
-        get "/farms/#{@farm.slug}"
+        get "/farms/#{@farm.id}/#{@farm.slug}"
         
         expect(last_response.body).to_not include("Edit farm")
       end
@@ -125,7 +125,7 @@ RSpec.describe FarmsController, :type => :controller do
       fill_in(:password, with: "meow")
       click_button 'submit'
       
-      visit "/farms/#{@farm.slug}/edit"
+      visit "/farms/#{@farm.id}/#{@farm.slug}/edit"
       
       click_button 'delete'
       expect(Farm.find_by(name: "Cattail Farm")).to eq(nil)

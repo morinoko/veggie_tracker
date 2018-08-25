@@ -1,5 +1,5 @@
 <h1>Edit farm</h1>
-<form method="POST" action="/farms/<%= @farm.slug %>">
+<form method="POST" action="/farms/<%= @farm.id %>/<%= @farm.slug %>">
   <input type="hidden" id="hidden" name="_method" value="patch">
   
   <div class="form-group">
@@ -15,7 +15,7 @@
 	<button type="submit" id="save" class="btn btn-primary">Save</button>
 </form>
 
-<form method="POST" action="/farms/<%= @farm.slug %>">
+<form method="POST" action="/farms//<%= @farm.id %>/<%= @farm.slug %>">
   <input type="hidden" id="hidden" name="_method" value="delete">
   <div class="form-group">
 		<input type="submit" id="delete" class="btn btn-outline-danger btn-sm" value="Delete farm">

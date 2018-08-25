@@ -18,6 +18,6 @@
   
 <% if @farm.user == current_user %>
   <div>
-    <a href="/farms/<%= @farm.slug %>/edit" class="btn btn-outline-info btn-sm">Edit farm</a>
+    <a href="/farms/<%= @farm.id %>/<%= @farm.slug %>/edit" class="btn btn-outline-info btn-sm">Edit farm</a>
   </div>
 <% end %>
