@@ -1,4 +1,5 @@
 require 'rack-flash'
+require 'date'
 
 class ApplicationController < Sinatra::Base
 	
