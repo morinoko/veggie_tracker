@@ -1,6 +1,6 @@
 class Farm < ActiveRecord::Base
 	belongs_to :user
-	has_many :vegetables
+	has_and_belongs_to_many :vegetables
 	validates :name, :location, presence: true
 	
 	def slug
