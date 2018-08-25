@@ -28,4 +28,28 @@ class VegetablesController < ApplicationController
     erb :'vegetables/show'
   end
   
+  patch '/vegetables/:id' do
+    params[:vegetable][:planting_season] = params[:vegetable][:planting_season].join(" ")
+    binding.pry
+    @vegetable = Vegetable.find_by(id: params[:id])
+    
+    @vegetable.update(params[:vegetable])
+    
+    redirect to "/vegetables/#{@vegetable.id}"
+  end
+  
+  get '/vegetables/:id/edit' do
+    @vegetable = Vegetable.find_by(id: params[:id])
+    
+    if @vegetable.farms.first.user == current_user
+      @user = current_user
+      
+      erb :'vegetables/edit'
+    else
+      flash[:notice] = "You need to login to do that!"
+      
+      redirect to '/login'
+    end
+  end
+  
 end
