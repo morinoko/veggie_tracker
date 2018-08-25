@@ -5,7 +5,7 @@
 <% if @farm.vegetables.count > 0 %>
   <ul>
   <% @farm.vegetables.each do |vegetable| %>
-    <li><a href="#"><%= vegetable.name %></a></li>
+    <li><a href="/vegetables/<%= vegetable.id %>"><%= vegetable.name %></a></li>
   <% end %>
   </ul>
 <% else %>

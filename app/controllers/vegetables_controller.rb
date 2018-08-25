@@ -22,4 +22,10 @@ class VegetablesController < ApplicationController
     redirect to "/users/#{current_user.slug}"
   end
   
+  get '/vegetables/:id' do
+    @vegetable = Vegetable.find_by(id: params[:id])
+    
+    erb :'vegetables/show'
+  end
+  
 end
