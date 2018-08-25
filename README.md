@@ -13,10 +13,9 @@ This is a simple ruby app that will allow you to keep track of what vegetables y
 - [x] Users can create a farm
 - [x] Users can edit
 - [x] Users can delete a farm
-- [ ] Users can add vegetables to a farm
-- [ ] Users can edit
-- [ ] Users can delete vegetables
+- [x] Users can add vegetables to a farm
+- [x] Users can edit vegetables
+- [x] Users can delete vegetables
 
-- [ ] Users can see which vegetables should be planted every month
-- [ ] Users can see when the planting season ends for each vegetable (if data is input)
+- [ ] Users can see which vegetables should be planted this month when viewing their dashboard
 
