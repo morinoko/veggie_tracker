@@ -10,13 +10,11 @@
   </ul>
 <% else %>
   <p>There aren't any veggies for this farm yet!</p>
-  
-  <% if @farm.user == current_user %>
-    <a href="/vegetables/new">Add a vegetable</a>
-  <% end %>
 <% end %>
-  
+
 <% if @farm.user == current_user %>
+  <a href="/vegetables/new">Add a vegetable</a>
+
   <div>
     <a href="/farms/<%= @farm.id %>/<%= @farm.slug %>/edit" class="btn btn-outline-info btn-sm">Edit farm</a>
   </div>
