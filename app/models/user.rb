@@ -4,7 +4,7 @@ class User < ActiveRecord::Base
 	has_many :vegetables, through: :farms
 	
 	validates :username, :email, :password, presence: true
-	validates :email, uniqueness: true
+	validates :email, :username, uniqueness: true
 	
 	def slug
   	self.username.downcase.gsub(" ", "-").gsub("'", "")
