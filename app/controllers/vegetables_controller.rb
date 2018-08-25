@@ -1,5 +1,3 @@
-require 'date'
-
 class VegetablesController < ApplicationController
   
   get '/vegetables/new' do
@@ -30,7 +28,6 @@ class VegetablesController < ApplicationController
   
   patch '/vegetables/:id' do
     params[:vegetable][:planting_season] = params[:vegetable][:planting_season].join(" ")
-    binding.pry
     @vegetable = Vegetable.find_by(id: params[:id])
     
     @vegetable.update(params[:vegetable])

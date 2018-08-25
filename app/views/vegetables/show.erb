@@ -1,2 +1,16 @@
 <h1><%= @vegetable.name %></h1>
 <a href="/vegetables/<%= @vegetable.id %>/edit">Edit</a>
+
+<h2>Months to plant</h2>
+<ul>
+<% @vegetable.planting_months_as_names.each do |month| %>
+  <li><%= month %></li>
+<% end %>
+</ul>
+
+<h2>Farms</h2>
+<ul>
+<% @vegetable.farms.each do |farm| %>
+  <li><%= farm.name %></li>
+<% end %>
+</ul>
