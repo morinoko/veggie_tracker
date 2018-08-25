@@ -93,6 +93,33 @@ RSpec.describe UsersController, :type => :controller do
         expect(last_request.path).to eq('/signup')
         expect(last_response.body).to include("This email is already taken.")
       end
+      
+      it "does not let allow duplicate username (slug) sign-ups" do
+        params = {
+          :username => "Rider",
+          :email => "howdy@aol.com",
+          :password => "cowboy"
+        }
+        
+        post '/signup', params
+        follow_redirect!
+        expect(last_request.path).to eq('/users/rider')
+        expect(last_response.body).to include("Welcome Rider!")
+        
+        get '/logout'
+        
+        params_2 = {
+          :username => "rider",
+          :email => "the_other_rider@aol.com",
+          :password => "double"
+        }
+        
+        post '/signup', params_2
+        follow_redirect!
+        expect(last_request.path).to eq('/signup')
+        expect(last_response.body).to include("This name is already taken.")
+      end
+
 
     end
   end

@@ -18,9 +18,13 @@ class UsersController < ApplicationController
 
       redirect to "/users/#{@user.slug}"
     elsif User.find_by(email: params[:email])
-       flash[:notice] = "This email is already taken."
+      flash[:notice] = "This email is already taken."
        
-       redirect to '/signup'
+      redirect to '/signup'
+    elsif User.find_by_slug(@user.slug)
+      flash[:notice] = "This name is already taken."
+      
+      redirect to '/signup'
     else
       flash[:notice] = "Looks like something went wrong. Try the form again."
 
