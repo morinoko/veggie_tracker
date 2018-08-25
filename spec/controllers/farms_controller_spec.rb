@@ -104,6 +104,13 @@ RSpec.describe FarmsController, :type => :controller do
         
         expect(last_response.location).to include("/")
       end
+      
+      it "does not show the edit button on the farm page" do
+        get '/logout'
+        get "/farms/#{@farm.slug}"
+        
+        expect(last_response.body).to_not include("Edit farm")
+      end
     end
   end
 
