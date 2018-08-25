@@ -15,7 +15,11 @@ class VegetablesController < ApplicationController
   end
   
   post '/vegetables' do
+    params[:planting_season] = params[:planting_season].join(" ")
+    @vegetable = Vegetable.new(params)
+    @vegetable.save
     
+    redirect to "/users/#{current_user.slug}"
   end
   
 end
