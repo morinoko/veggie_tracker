@@ -35,6 +35,15 @@ class VegetablesController < ApplicationController
     redirect to "/vegetables/#{@vegetable.id}"
   end
   
+  delete '/vegetables/:id' do
+    @vegetable = Vegetable.find_by(id: params[:id])
+    @user = current_user
+    
+    @vegetable.destroy
+    
+    redirect to "/users/#{@user.slug}"
+  end
+  
   get '/vegetables/:id/edit' do
     @vegetable = Vegetable.find_by(id: params[:id])
     
