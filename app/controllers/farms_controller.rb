@@ -43,18 +43,30 @@ class FarmsController < ApplicationController
     @farm = Farm.find_by(id: params[:id])
     @user = @farm.user
     
-    @farm.destroy
+    if current_user == @user
+      @farm.destroy
     
-    redirect to "/users/#{@user.slug}"
+      redirect to "/users/#{@user.slug}"
+    else
+      flash[:notice] = "You aren't permitted to do that!"
+      
+      redirect to "/"
+    end
   end
   
   get '/farms/:id/:slug/edit' do
-    @farm = Farm.find_by(id: params[:id])
+    if logged_in?
+      @farm = Farm.find_by(id: params[:id])
     
-    if logged_in? && current_user == @farm.user
-      erb :'farms/edit'
+      if current_user == @farm.user
+        erb :'farms/edit'
+      else
+        flash[:notice] = "You aren't permitted to do that!"
+        redirect to '/'
+      end
     else
-      redirect to '/'
+      flash[:notice] = "You need to login to edit farms!"
+      redirect to '/login'
     end
   end
   
