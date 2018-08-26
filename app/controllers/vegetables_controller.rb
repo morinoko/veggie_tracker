@@ -36,21 +36,38 @@ class VegetablesController < ApplicationController
   end
   
   delete '/vegetables/:id' do
-    @vegetable = Vegetable.find_by(id: params[:id])
-    @user = current_user
+    if logged_in?
+      @vegetable = Vegetable.find_by(id: params[:id])
     
-    @vegetable.destroy
-    
-    redirect to "/users/#{@user.slug}"
+      if @user = current_user
+        @vegetable.destroy
+        
+        redirect to "/users/#{@user.slug}"
+      else
+        flash[:notice] = "You aren't permitted to do that!"
+        
+        redirect to "/"
+      end
+    else
+      flash[:notice] = "You need to login to do that!"
+      
+      redirect to "/login"
+    end
   end
   
   get '/vegetables/:id/edit' do
-    @vegetable = Vegetable.find_by(id: params[:id])
+    if logged_in?
+      @vegetable = Vegetable.find_by(id: params[:id])
     
-    if current_user == @vegetable.user
-      @user = current_user
-      
-      erb :'vegetables/edit'
+      if current_user == @vegetable.user
+        @user = current_user
+        
+        erb :'vegetables/edit'
+      else
+        flash[:notice] = "You can only edit your own vegetables!"
+        
+        redirect to "/"
+      end
     else
       flash[:notice] = "You need to login to do that!"
       
