@@ -7,9 +7,4 @@ RSpec.describe 'Farm' do
   it "can make a slug from name" do
     expect(@farm.slug).to eq("joes-farm")
   end
-  
-  it "can find a farm with the slug" do
-    slug = @farm.slug
-    expect(Farm.find_by_slug(slug)).to eq(@farm)
-  end
 end
