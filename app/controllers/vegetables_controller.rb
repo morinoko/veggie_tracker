@@ -47,7 +47,7 @@ class VegetablesController < ApplicationController
   get '/vegetables/:id/edit' do
     @vegetable = Vegetable.find_by(id: params[:id])
     
-    if @vegetable.farms.first.user == current_user
+    if current_user == @vegetable.user
       @user = current_user
       
       erb :'vegetables/edit'
