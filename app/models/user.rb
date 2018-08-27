@@ -13,4 +13,12 @@ class User < ActiveRecord::Base
   def self.find_by_slug(slug)
     User.find { |user| user.slug == slug }
   end
+  
+  def this_months_vegetables
+    this_month = Time.now.month
+    
+    self.vegetables.select do |vegetable|
+      vegetable.planting_months_as_numbers.include?(this_month)
+    end.uniq
+  end
 end
