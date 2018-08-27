@@ -44,43 +44,80 @@ RSpec.describe VegetablesController, :type => :controller do
     
     context "logged out" do
       it "redirects the user to login" do
-        get '/farms/new'
+        get '/vegetables/new'
         
-        expect(last_response.location).to include('/login')
+        expect(last_response.redirect?).to be_truthy
+        follow_redirect!
+        expect(last_request.path).to eq('/login')
       end
     end
   end
   
-  describe "creating a vegetable" do
-    it "lets the user create a new vegetable" do
+  describe "creating, editing, and deleting a vegetable" do
+    before do
       @user = User.create(username: "Ria", email: "ria@gmail.com", password: "meow")
       @farm = Farm.create(name: "Cattail Farm", location: "Ohio", user_id: @user.id)
+      
+      @other_user = User.create(username: "Joe Farmer", email: "joe@aol.com", password: "farmer")
+      @other_user_farm = Farm.create(name: "Joe's Farm", location: "Columbus", user_id: @other_user.id)
+      @other_user_vegetable = Vegetable.create(name: "Parsnips", planting_season: "5")
+      @other_user_farm.vegetables << @other_user_vegetable
       
       visit '/login'
       
       fill_in(:username, with: "Ria")
       fill_in(:password, with: "meow")
       click_button 'submit'
-    end
-  end
-  
-  describe "editing a vegetable" do
-    it "lets the user edit a new vegetable" do
-      @user = User.create(username: "Ria", email: "ria@gmail.com", password: "meow")
-      @farm = Farm.create(name: "Cattail Farm", location: "Ohio", user_id: @user.id)
-      @vegetable = Vegetable.create(name: "Carrots", planting_season: "3 4 5")
-      @farm.vegetables << @vegetable
-      
-      visit '/login'
-      
-      fill_in(:username, with: "Ria")
-      fill_in(:password, with: "meow")
-      click_button 'submit'
-      
-      visit "/vegetables/#{@vegetable.id}/edit"
-      expect(page.status_code).to eq(200)
     end
     
-  end
+    it "lets the user create a new vegetable" do
+      visit '/vegetables/new'
+      
+      fill_in(:name, with: "Rhubarb")
+      check('April')
+      check('Cattail Farm')
+      click_button 'submit'
+      
+      expect(Vegetable.find_by(name: 'Rhubarb')).to be_truthy
+    end
   
+    it "lets the user edit an exisiting vegetable" do
+      vegetable = Vegetable.create(name: "Carrots", planting_season: "3 4 5")
+      @farm.vegetables << vegetable
+      
+      visit "/vegetables/#{vegetable.id}/edit"
+      expect(page.status_code).to eq(200)
+      
+      fill_in(:name, with: "Yellow Carrots")
+      uncheck('March')
+      check('August')
+      click_button 'submit'
+      
+      expect(Vegetable.find_by(name: 'Carrots')).to eq(nil)
+      expect(Vegetable.find_by(name: 'Yellow Carrots')).to be_truthy
+      
+      vegetable = Vegetable.find_by(name: 'Yellow Carrots')
+      expect(vegetable.planting_season).to eq("4 5 8")
+    end
+    
+    xit "does not allow users to edit another user's vegetable" do
+      # for some reason redirects to login instead of root?
+      
+      get "/vegetables/#{@other_user_vegetable.id}/edit"
+      
+      expect(last_response.redirect?).to be_truthy
+      follow_redirect!
+      expect(last_request.path).to eq('/')
+    end
+  
+    it "lets users delete a vegetable" do
+      vegetable = Vegetable.create(name: "Carrots", planting_season: "3 4 5")
+      @farm.vegetables << vegetable
+      
+      visit "/vegetables/#{vegetable.id}/edit"
+      
+      click_button 'delete'
+      expect(Vegetable.find_by(name: "Carrots")).to eq(nil)
+    end
+  end
 end
