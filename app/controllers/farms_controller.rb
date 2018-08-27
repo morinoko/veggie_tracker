@@ -28,7 +28,13 @@ class FarmsController < ApplicationController
   get '/farms/:id/:slug' do
     @farm = Farm.find_by(id: params[:id])
     
-    erb :'farms/show'
+    if @farm
+      erb :'farms/show'
+    else
+      flash[:notice] = "This farm doesn't seem to exist..."
+      
+      redirect to "/"
+    end
   end
   
   patch '/farms/:id/:slug' do

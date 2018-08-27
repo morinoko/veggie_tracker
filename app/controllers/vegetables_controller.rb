@@ -23,7 +23,13 @@ class VegetablesController < ApplicationController
   get '/vegetables/:id' do
     @vegetable = Vegetable.find_by(id: params[:id])
     
-    erb :'vegetables/show'
+    if @vegetable
+      erb :'vegetables/show'
+    else
+      flash[:notice] = "This veggie doesn't seem to exist..."
+      
+      redirect to "/"
+    end
   end
   
   patch '/vegetables/:id' do

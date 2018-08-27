@@ -67,6 +67,12 @@ class UsersController < ApplicationController
   get '/users/:slug' do
     @user = User.find_by_slug(params[:slug])
     
-    erb :'users/show'
+    if @user
+      erb :'users/show'
+    else
+      flash[:notice] = "This user doesn't seem to exist..."
+      
+      redirect to "/"
+    end
   end
 end
