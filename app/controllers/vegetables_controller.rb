@@ -39,7 +39,7 @@ class VegetablesController < ApplicationController
     if logged_in?
       @vegetable = Vegetable.find_by(id: params[:id])
     
-      if @user = current_user
+      if @vegetable.user == current_user
         @vegetable.destroy
         
         redirect to "/users/#{@user.slug}"
@@ -59,9 +59,8 @@ class VegetablesController < ApplicationController
     if logged_in?
       @vegetable = Vegetable.find_by(id: params[:id])
     
-      if current_user == @vegetable.user
+      if @vegetable.user == current_user
         @user = current_user
-        
         erb :'vegetables/edit'
       else
         flash[:notice] = "You can only edit your own vegetables!"
