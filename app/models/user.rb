@@ -3,8 +3,9 @@ class User < ActiveRecord::Base
 	has_many :farms
 	has_many :vegetables, through: :farms
 	
-	validates :username, :email, :password, presence: true
-	validates :email, :username, uniqueness: { case_sensitive: false }
+	validates :username, presence: true, uniqueness: { case_sensitive: false }
+	validates :email, presence: true, uniqueness: { case_sensitive: false }
+	validates :password, presence: true
 	
 	def slug
   	self.username.downcase.gsub(" ", "-").gsub("'", "")
