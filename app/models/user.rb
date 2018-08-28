@@ -19,7 +19,7 @@ class User < ActiveRecord::Base
     this_month = Time.now.month
     
     self.vegetables.select do |vegetable|
-      vegetable.planting_months_as_numbers.include?(this_month)
+      vegetable.planting_season.include?(this_month)
     end.uniq
   end
 end
