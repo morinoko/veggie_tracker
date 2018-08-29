@@ -1,7 +1,8 @@
 class User < ActiveRecord::Base
 	has_secure_password
 	has_many :farms
-	has_many :vegetables, through: :farms
+	has_many :farm_vegetables, through: :farms
+	has_many :vegetables, through: :farm_vegetables
 	
 	validates :username, presence: true, uniqueness: { case_sensitive: false }
 	validates :email, presence: true, uniqueness: { case_sensitive: false }

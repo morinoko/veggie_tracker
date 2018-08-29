@@ -1,5 +1,6 @@
 class Vegetable < ActiveRecord::Base
-	has_and_belongs_to_many :farms
+  has_many :farm_vegetables
+	has_many :farms, through: :farm_vegetables
 	
 	def planting_season
   	months = {}
