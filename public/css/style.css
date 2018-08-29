@@ -26,3 +26,10 @@ h1 {
 .onboarding .login-button {
     margin-bottom: 0.5em;
 }
+
+/* Sign up and Login */
+#signup-form .jumbotron,
+#login-form .jumbotron {
+  background-color: white;
+  margin-top: 3em;
+}
