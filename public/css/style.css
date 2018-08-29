@@ -1,4 +1,17 @@
+body {
+  background-color: #8FCC8F;
+}
+
 header,
 h1 {
   margin-bottom: 20px;
+}
+
+/* Onboarding */
+.onboarding {
+  margin-top: 3em;
+}
+
+.onboarding .login-button {
+    margin-bottom: 0.5em;
 }
