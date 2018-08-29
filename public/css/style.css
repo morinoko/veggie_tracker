@@ -2,9 +2,20 @@ body {
   background-color: #8FCC8F;
 }
 
+a {
+  color: #BF360C;
+}
+a:hover {
+  color: #E64A19;
+}
+
 header,
 h1 {
   margin-bottom: 20px;
+}
+
+.navbar {
+  background-color: #1E5D1D;
 }
 
 /* Onboarding */
