@@ -2,6 +2,11 @@ body {
   background-color: #8FCC8F;
 }
 
+header,
+h1 {
+  margin-bottom: 20px;
+}
+
 a {
   color: #BF360C;
 }
@@ -9,11 +14,38 @@ a:hover {
   color: #E64A19;
 }
 
-header,
-h1 {
-  margin-bottom: 20px;
+section.card,
+.nested-card {
+  margin-bottom: 1em;
 }
 
+.card__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.add-button {
+  display: block;
+  color: white;
+  background-color: #60c4d5;
+  text-align: center;
+  font-size: 2.4em;
+  font-weight: bold;
+  line-height: 1.15;
+  border-radius: 50%;
+  width: 1.3em;
+  height: 1.3em;
+}
+.add-button:hover {
+  text-decoration: none;
+  color: gray;
+  background-color: white;
+  border: 2px gray solid;
+  line-height: 1.1;
+}
+
+/* Navigation */
 .navbar {
   background-color: #1E5D1D;
 }

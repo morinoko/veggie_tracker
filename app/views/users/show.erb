@@ -1,14 +1,44 @@
-<h1><%= @user.username %>'s Dashboard</h1>
+<section id="farms" class="card">
+  <div class="card-body">
+    <div class="card__header">
+      <h2>My Farms</h2>
+      <a href="/farms/new" class="add-button">+</a>
+    </div>
+    <hr>
+    <% @user.farms.each do |farm| %>
+      <div class="card nested-card">
+        <div class="card-body">
+          <h3>
+            <a href="/farms/<%= farm.id %>/<%= farm.slug %>"><%= farm.name %></a>
+          </h3>
+          <ul>
+          <% farm.vegetables.each do |vegetable| %>
+            <li><%= vegetable.name %></li>
+          <% end %>
+          </ul>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</section>
 
-<h2>My Farms</h2>
-
-<% @user.farms.each do |farm| %>
-  <h3><a href="/farms/<%= farm.id %>/<%= farm.slug %>"><%= farm.name %></a></h3>
-  <ul>
-  <% farm.vegetables.each do |vegetable| %>
-    <li><%= vegetable.name %></li>
-  <% end %>
-  </ul>
-<% end %>
-
-<a href="/farms/new" class="btn btn-success">Add a new farm</a>
+<section id="vegetables" class="card">
+  <div class="card-body">
+    <div class="card__header">
+      <h2>All Veggies</h2>
+      <a href="/vegetables/new" class="add-button">+</a>
+    </div>
+    <hr>
+    <% @user.vegetables.each do |vegetable| %>
+      <div class="card nested-card">
+        <div class="card-body">
+          <h3>
+            <a href="/vegetables/<%= vegetable.id %>">
+              <%= vegetable.name %>
+            </a>
+          </h3>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</section>
