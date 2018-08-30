@@ -16,10 +16,8 @@ class Vegetable < ActiveRecord::Base
   	self.farms.first.user
   end
   
-  def planting_months_as_names
-    planting_season.select.with_index do |month, index|
-      month if self.planting_months_as_numbers.include?(index)
-    end
+  def planting_season_month_names
+    planting_season.values
   end
 	
 	private
