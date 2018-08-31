@@ -1,5 +1,6 @@
 body {
   background-color: #8FCC8F;
+  color: #455a64;
 }
 
 header,
@@ -12,17 +13,43 @@ a {
 }
 a:hover {
   color: #E64A19;
+  text-decoration: none;
 }
 
+/* Cards */
 section.card,
 .nested-card {
   margin-bottom: 1em;
 }
 
-.card__header {
+.card h1 {
+  margin-bottom: 0;
+}
+.nested-card a {
+  color: #de7e13;
+}
+
+.nested-card a:hover {
+  color: #ff9800;
+}  
+  
+#dashboard .card__header {
   display: flex;
   justify-content: space-between;
   align-items: center;
+}
+
+.card__footer {
+  text-align: right;
+}
+
+.card__meta,
+.card__meta a {
+  color: #78909c;
+}
+
+.card__meta a:hover {
+  color: #607d8b;
 }
 
 .add-button {
@@ -66,3 +93,9 @@ section.card,
   background-color: white;
   margin-top: 3em;
 }
+
+/* Dashboard */
+.months {
+  margin-bottom: 0;
+}
+

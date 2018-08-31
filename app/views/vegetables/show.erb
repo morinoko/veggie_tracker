@@ -1,19 +1,27 @@
-<h1><%= @vegetable.name %></h1>
+<section class="vegetable card">
+  <div class="card__header card-header">
+    <h1><%= @vegetable.name %></h1>
+    <span class="card__meta">
+    <% @vegetable.farms.each do |farm| %>
+      <a href="/farms/<%= farm.id %>/<%= farm.slug %>"><%= farm.name %></a><%= ' | ' unless farm == @vegetable.farms.last %>
+    <% end %>
+    </span>
+  </div>
 
-<h2>Months to plant</h2>
-<ul>
-<% @vegetable.planting_season_month_names.each do |month| %>
-  <li><%= month %></li>
-<% end %>
-</ul>
-
-<h2>Farms</h2>
-<ul>
-<% @vegetable.farms.each do |farm| %>
-  <li><%= farm.name %></li>
-<% end %>
-</ul>
-
-<% if current_user == @vegetable.user %>
-  <a href="/vegetables/<%= @vegetable.id %>/edit">Edit</a>
-<% end %>
+  <div class="card-body">
+    <h2>Months to plant</h2>
+    <ul>
+    <% @vegetable.planting_season_month_names.each do |month| %>
+      <li><%= month %></li>
+    <% end %>
+    </ul>
+  </div>
+    
+  <% if current_user == @vegetable.user %>
+    <div class="card__footer card-footer">
+      <a href="/vegetables/<%= @vegetable.id %>/edit" class="card-link">Edit</a>
+    </div>
+  <% end %>
+  
+  </div>
+</section>
