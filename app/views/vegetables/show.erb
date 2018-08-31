@@ -1,7 +1,7 @@
 <section class="vegetable card">
-  <div class="card__header card-header">
+  <div class="card-header">
     <h1><%= @vegetable.name %></h1>
-    <span class="card__meta">
+    <span class="card-meta">
     <% @vegetable.farms.each do |farm| %>
       <a href="/farms/<%= farm.id %>/<%= farm.slug %>"><%= farm.name %></a><%= ' | ' unless farm == @vegetable.farms.last %>
     <% end %>
@@ -18,7 +18,7 @@
   </div>
     
   <% if current_user == @vegetable.user %>
-    <div class="card__footer card-footer">
+    <div class="card-footer">
       <a href="/vegetables/<%= @vegetable.id %>/edit" class="card-link">Edit</a>
     </div>
   <% end %>

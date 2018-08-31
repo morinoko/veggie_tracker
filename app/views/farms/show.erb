@@ -1,7 +1,7 @@
 <section class="farm card">
-  <div class="card__header card-header">
+  <div class="card-header">
     <h1><%= @farm.name %></h1>
-    <span class="card__meta">
+    <span class="card-meta">
       <%= @farm.location %>
     </span>
   </div>
@@ -24,7 +24,7 @@
   </div>
   
   <% if @farm.user == current_user %>
-    <div class="card__footer card-footer">
+    <div class="card-footer">
       <a href="/farms/<%= @farm.id %>/<%= @farm.slug %>/edit">Edit farm</a>
     </div>
   <% end %>

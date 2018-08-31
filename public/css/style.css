@@ -39,12 +39,12 @@ section.card,
   align-items: center;
 }
 
-.card__footer {
+.card-footer {
   text-align: right;
 }
 
-.card__meta,
-.card__meta a {
+.card-meta,
+.card-meta a {
   color: #78909c;
 }
 
