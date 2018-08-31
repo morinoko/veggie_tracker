@@ -99,3 +99,8 @@ section.card,
   margin-bottom: 0;
 }
 
+/* Forms */
+.card-footer .form-group {
+  margin-bottom: 0;
+}
+
