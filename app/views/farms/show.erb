@@ -1,21 +1,31 @@
-<h1><%= @farm.name %></h1>
-<p><%= @farm.location %></p>
-
-<h2>Vegetables</h2>
-<% if @farm.vegetables.count > 0 %>
-  <ul>
-  <% @farm.vegetables.each do |vegetable| %>
-    <li><a href="/vegetables/<%= vegetable.id %>"><%= vegetable.name %></a></li>
-  <% end %>
-  </ul>
-<% else %>
-  <p>There aren't any veggies for this farm yet!</p>
-<% end %>
-
-<% if @farm.user == current_user %>
-  <a href="/vegetables/new">Add a vegetable</a>
-
-  <div>
-    <a href="/farms/<%= @farm.id %>/<%= @farm.slug %>/edit" class="btn btn-outline-info btn-sm">Edit farm</a>
+<section class="farm card">
+  <div class="card__header card-header">
+    <h1><%= @farm.name %></h1>
+    <span class="card__meta">
+      <%= @farm.location %>
+    </span>
   </div>
-<% end %>
+
+  <div class="card-body">
+    <h2>Veggies</h2>
+    <% if @farm.vegetables.count > 0 %>
+      <ul>
+      <% @farm.vegetables.each do |vegetable| %>
+        <li><a href="/vegetables/<%= vegetable.id %>"><%= vegetable.name %></a></li>
+      <% end %>
+      </ul>
+    <% else %>
+      <p>There aren't any veggies for this farm yet!</p>
+    <% end %>
+    
+    <% if @farm.user == current_user %>
+      <a href="/vegetables/new" class="btn btn-outline-info btn-sm">+ Add a veggie</a>
+    <% end %>
+  </div>
+  
+  <% if @farm.user == current_user %>
+    <div class="card__footer card-footer">
+      <a href="/farms/<%= @farm.id %>/<%= @farm.slug %>/edit">Edit farm</a>
+    </div>
+  <% end %>
+</section>
