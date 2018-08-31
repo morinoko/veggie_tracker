@@ -1,11 +1,11 @@
 <div id="dashboard">
   <section id="farms" class="card">
+    <div class="card-header">
+      <h2>My Farms</h2>
+      <a href="/farms/new" class="add-button">+</a>
+    </div>
+    
     <div class="card-body">
-      <div class="card__header">
-        <h2>My Farms</h2>
-        <a href="/farms/new" class="add-button">+</a>
-      </div>
-      <hr>
       <% @user.farms.each do |farm| %>
         <div class="card nested-card">
           <div class="card-body">
@@ -24,26 +24,25 @@
   </section>
   
   <section id="vegetables" class="card">
-    <div class="card-body">
-      <div class="card__header">
-        <h2>All Veggies</h2>
-        <a href="/vegetables/new" class="add-button">+</a>
-      </div>
-      <hr>
-      <% @user.vegetables.uniq.each do |vegetable| %>
-        <div class="card nested-card">
-          <div class="card-body">
-            <h3>
-              <a href="/vegetables/<%= vegetable.id %>">
-                <%= vegetable.name %>
-              </a>
-            </h3>
-            <p class="months">
-              <%= vegetable.planting_season_month_names.join(", ") %>
-            </p>
-          </div>
-        </div>
-      <% end %>
+    <div class="card-header">
+      <h2>All Veggies</h2>
+      <a href="/vegetables/new" class="add-button">+</a>
     </div>
+    
+    <div class="card-body">
+    <% @user.vegetables.uniq.each do |vegetable| %>
+      <div class="card nested-card">
+        <div class="card-body">
+          <h3>
+            <a href="/vegetables/<%= vegetable.id %>">
+              <%= vegetable.name %>
+            </a>
+          </h3>
+          <p class="months">
+            <%= vegetable.planting_season_month_names.join(", ") %>
+          </p>
+        </div>
+      </div>
+    <% end %>
   </section>
 </div>
