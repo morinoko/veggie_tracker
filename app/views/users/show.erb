@@ -30,7 +30,7 @@
         <a href="/vegetables/new" class="add-button">+</a>
       </div>
       <hr>
-      <% @user.vegetables.each do |vegetable| %>
+      <% @user.vegetables.uniq.each do |vegetable| %>
         <div class="card nested-card">
           <div class="card-body">
             <h3>
