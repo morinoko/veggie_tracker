@@ -7,7 +7,7 @@
   </div>
 
   <div class="card-body">
-    <h2>Veggies</h2>
+    <h2><%= t('farms.show.subtitle.veggies') %></h2>
     <% if @farm.vegetables.any? %>
       <ul>
       <% @farm.vegetables.each do |vegetable| %>
@@ -15,17 +15,17 @@
       <% end %>
       </ul>
     <% else %>
-      <p>There aren't any veggies for this farm yet!</p>
+      <p><%= t('farms.show.no_veggies') %></p>
     <% end %>
     
     <% if @farm.user == current_user %>
-      <a href="/vegetables/new" class="btn btn-outline-info btn-sm">+ Add a veggie</a>
+      <a href="/vegetables/new" class="btn btn-outline-info btn-sm">+ <%= t('farms.show.add_veggie') %></a>
     <% end %>
   </div>
   
   <% if @farm.user == current_user %>
     <div class="card-footer">
-      <a href="/farms/<%= @farm.id %>/<%= @farm.slug %>/edit">Edit farm</a>
+      <a href="/farms/<%= @farm.id %>/<%= @farm.slug %>/edit"><%= t('farms.show.edit') %></a>
     </div>
   <% end %>
 </section>

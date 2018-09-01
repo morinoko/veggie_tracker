@@ -1,21 +1,21 @@
 <div class="form card">
   <div class="card-header">
-    <h1>Create a new farm</h1>
+    <h1><%= t('farms.form.new.title') %></h1>
   </div>
   
   <div class="card-body">
     <form method="POST" action="/farms">
       <div class="form-group">
-    		<label for="name">Name of the Farm</label>
+    		<label for="name"><%= t('farms.form.name') %></label>
     		<input type="text" id="name" name="name" class="form-control">
     	</div>
     	
     	<div class="form-group">
-    		<label for="location">Location</label>
+    		<label for="location"><%= t('farms.form.location') %></label>
     		<input type="text" id="location" name="location" class="form-control">
     	</div>
     	
-    	<button type="submit" id="submit" class="btn btn-info">Add farm</button>
+    	<button type="submit" id="submit" class="btn btn-info"><%= t('farms.form.new.submit') %></button>
     </form>
   </div>
 </div>

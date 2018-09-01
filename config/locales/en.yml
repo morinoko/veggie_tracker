@@ -26,3 +26,20 @@ en:
       no_farms: You don't have any farms yet!
       no_veggies: You don't have any veggies yet!
       create_now: Create one now
+  farms:
+    show:
+      subtitle:
+        veggies: Veggies
+      no_veggies: There aren't any veggies for this farm yet!
+      add_veggie: Add a veggie
+      edit: Edit farm
+    form:
+      name: Name of the Farm
+      location: Location
+      delete: Delete farm
+      new:
+        title: Create a new farm
+        submit: Add farm
+      edit:
+        title: Edit farm
+        submit: Save

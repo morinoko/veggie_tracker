@@ -1,6 +1,6 @@
 <div class="form card">
   <div class="card-header">
-    <h1>Edit farm</h1>
+    <h1><%= t('farms.form.edit.title') %></h1>
   </div>
   
   <div class="card-body">
@@ -8,16 +8,16 @@
       <input type="hidden" id="hidden" name="_method" value="patch">
       
       <div class="form-group">
-    		<label for="name">Name of the Farm</label>
+    		<label for="name"><%= t('farms.form.name') %></label>
     		<input type="text" id="name" name="name" class="form-control" value="<%= @farm.name %>">
     	</div>
     	
     	<div class="form-group">
-    		<label for="location">Location</label>
+    		<label for="location"><%= t('farms.form.location') %></label>
     		<input type="text" id="location" name="location" class="form-control" value="<%= @farm.location %>">
     	</div>
     	
-    	<button type="submit" id="save" class="btn btn-info">Save</button>
+    	<button type="submit" id="save" class="btn btn-info"><%= t('farms.form.edit.submit') %></button>
     </form>
   </div>
   
@@ -25,7 +25,7 @@
     <form method="POST" action="/farms/<%= @farm.id %>/<%= @farm.slug %>">
       <input type="hidden" id="hidden" name="_method" value="delete">
       <div class="form-group">
-    		<input type="submit" id="delete" class="btn btn-outline-danger btn-sm" value="Delete farm">
+    		<input type="submit" id="delete" class="btn btn-outline-danger btn-sm" value="<%= t('farms.form.delete') %>">
     	</div>
     </form>
   </div>
