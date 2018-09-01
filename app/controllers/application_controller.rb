@@ -15,8 +15,9 @@ class ApplicationController < Sinatra::Base
 		use Rack::Flash, :sweep => true
 		
 		I18n::Backend::Simple.send(:include, I18n::Backend::Fallbacks)
-    I18n.load_path = Dir[File.join(settings.root, 'locales', '*.yml')]
+    I18n.load_path = Dir[File.join('config/locales', '*.yml')]
     I18n.backend.load_translations
+    I18n.available_locales = [:en, :ja]
 	end
 	
 	before '/:locale/*' do
@@ -40,6 +41,10 @@ class ApplicationController < Sinatra::Base
 		def logged_in?
 			!!current_user
 		end
+		
+		def t(*args)
+  		I18n.t(*args)
+    end
 		
 		def find_template(views, name, engine, &block)
       I18n.fallbacks[I18n.locale].each { |locale|
