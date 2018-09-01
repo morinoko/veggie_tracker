@@ -8,7 +8,7 @@ ja:
   password: パスワード
   signup: 
     title: アカウントを作る
-    signup_submit: サインアップ
+    submit: サインアップ
   onboarding: 
     welcome: ようこそ！ベジトラッカーへ!
     catchphrase: その月に植える予定の野菜をお知らせしてくれるシンプルなアプリです。
