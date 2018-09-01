@@ -1,17 +1,17 @@
 <nav class="navbar navbar-expand-lg navbar-dark">
   <div class="container">
-    <a class="navbar-brand" href="/"><%= t('site-title') %></a>
+    <a class="navbar-brand" href="/"><%= t('site_title') %></a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
       <div class="navbar-nav">
         <% if logged_in? %>
-        	<a class="nav-item nav-link" href="/users/<%= current_user.slug %>">My Dashboard</a>
-          <a class="nav-item nav-link" href="/logout"><%= t(:logout) %></a>
+        	<a class="nav-item nav-link" href="/users/<%= current_user.slug %>"><%= t('dashboard') %></a>
+          <a class="nav-item nav-link" href="/logout"><%= t('logout') %></a>
         <% else %>
-        	<a class="nav-item nav-link" href="/signup"><%= t(:signup) %></a>
-          <a class="nav-item nav-link" href="/login"><%= t(:login) %></a>
+        	<a class="nav-item nav-link" href="/signup"><%= t('signup.signup') %></a>
+          <a class="nav-item nav-link" href="/login"><%= t('login') %></a>
         <% end %>
       </div>
     </div>

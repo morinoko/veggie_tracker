@@ -1,24 +1,24 @@
 <div class="row justify-content-center">
   <div id="signup-form" class="col-12 col-lg-8">
     <div class="jumbotron">
-      <h1>Sign up for Veggie Tracker!</h1>
+      <h1><%= t('signup.title') %></h1>
       <form action="/signup" method="POST">
       	<div class="form-group">
-      		<label for="username">Username</label>
+      		<label for="username"><%= t('username') %></label>
       		<input type="text" id="username" name="username" class="form-control">
       	</div>
       	
       	<div class="form-group">
-      		<label for="email">Email</label>
+      		<label for="email"><%= t('email') %></label>
       		<input type="email" id="email" name="email" class="form-control">
       	</div>
       	
       	<div class="form-group">
-      		<label for="password">Password</label>
+      		<label for="password"><%= t('password') %></label>
       		<input type="password" id="password" name="password" class="form-control">
       	</div>
       	
-      	<button type="submit" class="btn btn-primary">Sign up</button>
+      	<button type="submit" class="btn btn-primary"><%= t('signup') %></button>
       </form>
     </div>
   </div>
