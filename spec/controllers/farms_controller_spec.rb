@@ -7,10 +7,16 @@ RSpec.describe FarmsController, :type => :controller do
     before do
       @user = User.create(username: "Ria", email: "ria@gmail.com", password: "meow")
       @farm = Farm.create(name: "Cattail Farm", location: "Ohio", user_id: @user.id)
+      
+      visit '/login'
+      
+      fill_in(:username, with: "Ria")
+      fill_in(:password, with: "meow")
+      click_button 'submit'
     end
     
     it "loads the farm page" do
-      get "/farms/#{@farm.id}/cattail-farm"
+      get "/farms/#{@farm.id}/#{@farm.slug}"
       
       expect(last_response.status).to eq(200)
       expect(last_response.body).to include(@farm.name)
