@@ -1,0 +1,34 @@
+<div class="row justify-content-center">
+  <div class="col-12 col-lg-8">
+    <div id="this-month" class="card">
+      <div class="card-header">
+        <h1>Veggies to plant this month:</h2>
+      </div>
+      
+      <div class="card-body">
+        <% if @user.this_months_vegetables %>
+            <% @user.this_months_vegetables.each do |vegetable| %>
+              <div class="card nested-card">
+                <div class="card-body">
+                  <h2><a href="/vegetables/<%= vegetable.id %>"><%= vegetable.name %></a></h2>
+                  <span class="card-meta">
+                    <% vegetable.farms.each do |farm| %>
+                      <a href="/farms/<%= farm.id %>/<%= farm.slug %>"><%= farm.name %></a><%= ' | ' unless farm == vegetable.farms.last %>
+                    <% end %>
+                  </span>
+                </div>
+              </div>
+            <% end %>
+        <% else %>
+          <p>There are no veggies to plant this month! Go and relax ;)</p>
+        <% end %>
+        
+        <a href="/vegetables/new" class="add-link">+ Add another veggie</a>
+      </div>
+      
+      <div class="card-footer">
+        <a href="/users/<%= @user.slug %>" class="btn btn-info">Go to Dashboard</a>
+      </div>
+    </div>
+  </div>
+</div>

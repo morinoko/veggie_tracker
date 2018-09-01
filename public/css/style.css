@@ -25,18 +25,18 @@ section.card,
 .card h1 {
   margin-bottom: 0;
 }
+
 .nested-card a {
   color: #de7e13;
 }
 
 .nested-card a:hover {
   color: #ff9800;
-}  
-  
-#dashboard .card-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+}
+
+.card-body > a {
+  display: block;
+  margin-top: 1em;
 }
 
 .card-footer {
@@ -48,7 +48,7 @@ section.card,
   color: #78909c;
 }
 
-.card__meta a:hover {
+.card-meta a:hover {
   color: #607d8b;
 }
 
@@ -97,6 +97,21 @@ section.card,
 /* Dashboard */
 .months {
   margin-bottom: 0;
+}
+
+#dashboard .card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* This Month */
+#this-month h1 {
+  font-size: 2em;
+}
+
+#this-month .card-footer {
+  text-align: center;
 }
 
 /* Forms */

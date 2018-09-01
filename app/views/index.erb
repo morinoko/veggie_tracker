@@ -1,14 +1,5 @@
 <% if logged_in? %>
-<h2>Veggies to plant this month:</h2>
-  <% if @user.this_months_vegetables %>
-    <ul>
-      <% @user.this_months_vegetables.each do |vegetable| %>
-        <li><%= vegetable.name %></li>
-      <% end %>
-    </ul>
-  <% else %>
-    <p>There are no veggies to plant this month! Go and relax ;)</p>
-  <% end %>
+  <%= erb :'partials/this-month' %>
 <% else %>
   <%= erb :'partials/onboarding' %>
 <% end %>
