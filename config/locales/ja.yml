@@ -1,7 +1,16 @@
 ja:
-  site-title: Veggie Tracker
-  signup: アカウントを作る
+  site_title: Veggie Tracker
   login: ロッグイン
   logout: ロッグアウト
+  dashboard: ダッシュボード
+  username: ユーザー名
+  email: メールアドレス
+  password: パスワード
+  signup: 
+    title: アカウントを作る
+    signup_submit: サインアップ
   onboarding: 
-    welcome: よこそう！
+    welcome: ようこそ！ベジトラッカーへ!
+    catchphrase: その月に植える予定の野菜をお知らせしてくれるシンプルなアプリです。
+    have_account: 既にアカウントをお持ちの方：
+    login_now: こちらでログイン

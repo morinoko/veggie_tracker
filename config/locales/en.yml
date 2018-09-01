@@ -1,7 +1,16 @@
 en:
-  site-title: Veggie Tracker
-  signup: Sign up
+  site_title: Veggie Tracker
   login: Login
   logout: Logout
+  dashboard: My Dashboard
+  username: Username
+  email: Email
+  password: Password
+  signup:
+    title: Sign up for Veggie Tracker
+    signup_submit: Sign up
   onboarding: 
     welcome: Welcome to Veggie Tracker!
+    catchphrase: Veggie Tracker is a simple way to keep track of which vegetables you need to plant every month.
+    have_account: Have an account?
+    login_now: Login now.
