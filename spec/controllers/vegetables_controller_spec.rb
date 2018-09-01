@@ -38,7 +38,7 @@ RSpec.describe VegetablesController, :type => :controller do
         visit '/vegetables/new'
         
         expect(page.status_code).to eq(200)
-        expect(page.body).to include("Add a vegetable")
+        expect(page.body).to include("Add veggie")
       end
     end
     
@@ -97,7 +97,7 @@ RSpec.describe VegetablesController, :type => :controller do
       expect(Vegetable.find_by(name: 'Yellow Carrots')).to be_truthy
       
       vegetable = Vegetable.find_by(name: 'Yellow Carrots')
-      expect(vegetable.planting_season).to eq("4 5 8")
+      expect(vegetable.planting_season).to eq({4 => "April", 5 => "May", 8 => "August"})
     end
     
     xit "does not allow users to edit another user's vegetable" do
