@@ -6,7 +6,7 @@ class FarmsController < ApplicationController
     else
       flash[:notice] = "You need to be logged in to do that!"
       
-      redirect to "/login"
+      redirect to "/#{I18n.locale}/login"
     end
   end
   
@@ -17,11 +17,11 @@ class FarmsController < ApplicationController
       @farm.user = current_user
       @farm.save
       
-      redirect to "/farms/#{@farm.id}/#{@farm.slug}"
+      redirect to "/#{I18n.locale}/farms/#{@farm.id}/#{@farm.slug}"
     else
       flash[:notice] = "Please fill in all the fields."
       
-      redirect to '/farms/new'
+      redirect to "/#{I18n.locale}/farms/new"
     end
   end
   
@@ -33,7 +33,7 @@ class FarmsController < ApplicationController
     else
       flash[:notice] = "This farm doesn't seem to exist..."
       
-      redirect to "/"
+      redirect to "/#{I18n.locale}/"
     end
   end
   
@@ -42,7 +42,7 @@ class FarmsController < ApplicationController
     
     @farm.update(name: params[:name], location: params[:location])
     
-    redirect to "/farms/#{@farm.id}/#{@farm.slug}"
+    redirect to "/#{I18n.locale}/farms/#{@farm.id}/#{@farm.slug}"
   end
   
   delete '/farms/:id/:slug' do
@@ -52,11 +52,11 @@ class FarmsController < ApplicationController
     if current_user == @user
       @farm.destroy
     
-      redirect to "/users/#{@user.slug}"
+      redirect to "/#{I18n.locale}/users/#{@user.slug}"
     else
       flash[:notice] = "You aren't permitted to do that!"
       
-      redirect to "/"
+      redirect to "/#{I18n.locale}/"
     end
   end
   
@@ -68,11 +68,11 @@ class FarmsController < ApplicationController
         erb :'farms/edit'
       else
         flash[:notice] = "You aren't permitted to do that!"
-        redirect to '/'
+        redirect to "/#{I18n.locale}/"
       end
     else
       flash[:notice] = "You need to login to edit farms!"
-      redirect to '/login'
+      redirect to "/#{I18n.locale}/login"
     end
   end
   
