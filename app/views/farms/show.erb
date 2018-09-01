@@ -8,7 +8,7 @@
 
   <div class="card-body">
     <h2>Veggies</h2>
-    <% if @farm.vegetables.count > 0 %>
+    <% if @farm.vegetables.any? %>
       <ul>
       <% @farm.vegetables.each do |vegetable| %>
         <li><a href="/vegetables/<%= vegetable.id %>"><%= vegetable.name %></a></li>
