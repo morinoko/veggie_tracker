@@ -2,7 +2,7 @@
   <div class="col-12 col-lg-8">
     <div id="this-month" class="card">
       <div class="card-header">
-        <h1>Veggies to plant this month:</h2>
+        <h1><%= t('this_month.title') %></h2>
       </div>
       
       <div class="card-body">
@@ -20,14 +20,14 @@
               </div>
             <% end %>
         <% else %>
-          <p>There are no veggies to plant this month! Go and relax ;)</p>
+          <p><%= t('this_month.no_veggies') %></p>
         <% end %>
         
-        <a href="/vegetables/new" class="add-link">+ Add another veggie</a>
+        <a href="/vegetables/new" class="add-link">+ <%= t('this_month.add_veggie') %></a>
       </div>
       
       <div class="card-footer">
-        <a href="/users/<%= @user.slug %>" class="btn btn-info">Go to Dashboard</a>
+        <a href="/users/<%= @user.slug %>" class="btn btn-info"><%= t('this_month.dashboard_link') %></a>
       </div>
     </div>
   </div>
