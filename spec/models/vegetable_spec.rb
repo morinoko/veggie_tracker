@@ -11,15 +11,13 @@ RSpec.describe 'Vegetable' do
   end
   
   it "can convert planting_season data to integers" do
-    expect(@vegetable.planting_months_as_numbers).to eq([3, 4, 5])
-    expect(@vegetable.planting_months_as_numbers).to be_instance_of(Array)
-    expect(@vegetable.planting_months_as_numbers.first).to be_instance_of(Integer)
+    expect(@vegetable.planting_season).to eq({3 => "March", 4 => "April", 5 => "May"})
   end
   
   it "can convert planting_season data to month names" do
-    expect(@vegetable.planting_months_as_names).to be_instance_of(Array)
-    expect(@vegetable.planting_months_as_names.include?("March")).to be(true)
-    expect(@vegetable.planting_months_as_names.include?("April")).to be(true)
-    expect(@vegetable.planting_months_as_names.include?("May")).to be(true)
+    expect(@vegetable.planting_season_month_names).to be_instance_of(Array)
+    expect(@vegetable.planting_season_month_names.include?("March")).to be(true)
+    expect(@vegetable.planting_season_month_names.include?("April")).to be(true)
+    expect(@vegetable.planting_season_month_names.include?("May")).to be(true)
   end
 end
