@@ -1,8 +1,8 @@
 class UsersController < ApplicationController
-
+  
   get '/signup' do
     if logged_in?
-      redirect to '/'
+      redirect to "/#{I18n.locale}/"
     else
       erb :'registration/signup'
     end
@@ -16,25 +16,25 @@ class UsersController < ApplicationController
 
       session[:user_id] = @user.id
 
-      redirect to "/users/#{@user.slug}"
+      redirect to "/#{I18n.locale}/users/#{@user.slug}"
     elsif User.find_by(email: params[:email])
       flash[:notice] = "This email is already taken."
        
-      redirect to '/signup'
+      redirect to "/#{I18n.locale}/signup"
     elsif User.find_by_slug(@user.slug)
       flash[:notice] = "This name is already taken."
       
-      redirect to '/signup'
+      redirect to "/#{I18n.locale}/signup"
     else
       flash[:notice] = "Looks like something went wrong. Try the form again."
 
-      redirect to '/signup'
+      redirect to "/#{I18n.locale}/signup"
     end
   end
 
   get '/login' do
     if logged_in?
-      redirect to "/users/#{current_user.slug}"
+      redirect to "/#{I18n.locale}/users/#{current_user.slug}"
     else
       erb :'sessions/login'
     end
@@ -47,20 +47,20 @@ class UsersController < ApplicationController
       session[:user_id] = @user.id
       flash[:notice] = "Welcome, #{@user.username}!"
 
-      redirect to "/users/#{@user.slug}"
+      redirect to "/#{I18n.locale}/users/#{@user.slug}"
     else
       flash[:notice] = "Your username or password was incorrect! Please try again."
 
-      redirect to '/login'
+      redirect to "/#{I18n.locale}/login"
     end
   end
 
   get '/logout' do
     if logged_in?
       session.destroy
-      redirect to '/'
+      redirect to "/#{I18n.locale}/"
     else
-      redirect to '/'
+      redirect to "/#{I18n.locale}/"
     end
   end
   
@@ -72,7 +72,7 @@ class UsersController < ApplicationController
     else
       flash[:notice] = "This user doesn't seem to exist..."
       
-      redirect to "/"
+      redirect to "/#{I18n.locale}/"
     end
   end
 end
