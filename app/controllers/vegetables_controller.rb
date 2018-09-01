@@ -8,7 +8,7 @@ class VegetablesController < ApplicationController
     else
      flash[:notice] = "You need to be logged in to do that!"
      
-     redirect to '/login'
+     redirect to "/#{I18n.locale}/login"
     end
   end
   
@@ -17,7 +17,7 @@ class VegetablesController < ApplicationController
     @vegetable = Vegetable.new(params)
     @vegetable.save
     
-    redirect to "/users/#{current_user.slug}"
+    redirect to "/#{I18n.locale}/users/#{current_user.slug}"
   end
   
   get '/vegetables/:id' do
@@ -28,7 +28,7 @@ class VegetablesController < ApplicationController
     else
       flash[:notice] = "This veggie doesn't seem to exist..."
       
-      redirect to "/"
+      redirect to "/#{I18n.locale}/"
     end
   end
   
@@ -38,7 +38,7 @@ class VegetablesController < ApplicationController
     
     @vegetable.update(params[:vegetable])
     
-    redirect to "/vegetables/#{@vegetable.id}"
+    redirect to "/#{I18n.locale}/vegetables/#{@vegetable.id}"
   end
   
   delete '/vegetables/:id' do
@@ -48,16 +48,16 @@ class VegetablesController < ApplicationController
       if @vegetable.user == current_user
         @vegetable.destroy
         
-        redirect to "/users/#{@user.slug}"
+        redirect to "/#{I18n.locale}/users/#{@user.slug}"
       else
         flash[:notice] = "You aren't permitted to do that!"
         
-        redirect to "/"
+        redirect to "/#{I18n.locale}/"
       end
     else
       flash[:notice] = "You need to login to do that!"
       
-      redirect to "/login"
+      redirect to "/#{I18n.locale}/login"
     end
   end
   
@@ -71,12 +71,12 @@ class VegetablesController < ApplicationController
       else
         flash[:notice] = "You can only edit your own vegetables!"
         
-        redirect to "/"
+        redirect to "/#{I18n.locale}/"
       end
     else
       flash[:notice] = "You need to login to do that!"
       
-      redirect to '/login'
+      redirect to "/#{I18n.locale}/login"
     end
   end
   
