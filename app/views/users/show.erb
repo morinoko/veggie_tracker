@@ -1,7 +1,7 @@
 <div id="dashboard">
   <section id="farms" class="card">
     <div class="card-header">
-      <h2>My Farms</h2>
+      <h2><%= t('users.show.subtitle_farms') %></h2>
       <a href="/farms/new" class="add-button">+</a>
     </div>
     
@@ -22,14 +22,14 @@
           </div>
         <% end %>
       <% else %>
-        <p>You don't have any farms yet! <a href="/farms/new">Create one now</a>.</p>
+        <p>Y<%= t('users.show.no_farms') %> <a href="/farms/new"><%= t('users.show.create_now') %></a>.</p>
       <% end %>
     </div>
   </section>
   
   <section id="vegetables" class="card">
     <div class="card-header">
-      <h2>All Veggies</h2>
+      <h2><%= t('users.show.subtitle_veggies') %></h2>
       <a href="/vegetables/new" class="add-button">+</a>
     </div>
     
@@ -50,7 +50,7 @@
         </div>
       <% end %>
     <% else %>
-      <p>You don't have any veggies yet! <a href="/vegetables/new">Add one now</a>.</p>
+      <p><%= t('users.show.no_veggies') %> <a href="/vegetables/new"><%= t('users.show.create_now') %></a>.</p>
     <% end %>
   </section>
 </div>

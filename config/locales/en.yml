@@ -19,3 +19,10 @@ en:
     no_veggies: There are no veggies to plant this month! Go and relax ;)
     add_veggie: Add another veggie
     dashboard_link: Go to Dashboard
+  users:
+    show:
+      subtitle_farms: My Farms
+      subtitle_veggies: My Veggies
+      no_farms: You don't have any farms yet!
+      no_veggies: You don't have any veggies yet!
+      create_now: Create one now
