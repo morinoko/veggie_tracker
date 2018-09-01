@@ -6,19 +6,23 @@
     </div>
     
     <div class="card-body">
-      <% @user.farms.each do |farm| %>
-        <div class="card nested-card">
-          <div class="card-body">
-            <h3>
-              <a href="/farms/<%= farm.id %>/<%= farm.slug %>"><%= farm.name %></a>
-            </h3>
-            <ul>
-            <% farm.vegetables.each do |vegetable| %>
-              <li><%= vegetable.name %></li>
-            <% end %>
-            </ul>
+      <% if @user.farms.any? %>
+        <% @user.farms.each do |farm| %>
+          <div class="card nested-card">
+            <div class="card-body">
+              <h3>
+                <a href="/farms/<%= farm.id %>/<%= farm.slug %>"><%= farm.name %></a>
+              </h3>
+              <ul>
+              <% farm.vegetables.each do |vegetable| %>
+                <li><%= vegetable.name %></li>
+              <% end %>
+              </ul>
+            </div>
           </div>
-        </div>
+        <% end %>
+      <% else %>
+        <p>You don't have any farms yet! <a href="/farms/new">Create one now</a>.</p>
       <% end %>
     </div>
   </section>
@@ -30,19 +34,23 @@
     </div>
     
     <div class="card-body">
-    <% @user.vegetables.uniq.each do |vegetable| %>
-      <div class="card nested-card">
-        <div class="card-body">
-          <h3>
-            <a href="/vegetables/<%= vegetable.id %>">
-              <%= vegetable.name %>
-            </a>
-          </h3>
-          <p class="months">
-            <%= vegetable.planting_season_month_names.join(", ") %>
-          </p>
+    <% if @user.vegetables.any? %>
+      <% @user.vegetables.uniq.each do |vegetable| %>
+        <div class="card nested-card">
+          <div class="card-body">
+            <h3>
+              <a href="/vegetables/<%= vegetable.id %>">
+                <%= vegetable.name %>
+              </a>
+            </h3>
+            <p class="months">
+              <%= vegetable.planting_season_month_names.join(", ") %>
+            </p>
+          </div>
         </div>
-      </div>
+      <% end %>
+    <% else %>
+      <p>You don't have any veggies yet! <a href="/vegetables/new">Add one now</a>.</p>
     <% end %>
   </section>
 </div>
