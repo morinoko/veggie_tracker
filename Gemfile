@@ -11,6 +11,7 @@ gem 'rack-flash3'
 gem 'require_all'
 gem 'pry'
 gem 'tux'
+gem 'i18n'
 
 group :development, :test do
   gem 'sqlite3'

@@ -103,6 +103,7 @@ DEPENDENCIES
   bcrypt
   capybara
   database_cleaner
+  i18n
   pg
   pry
   rack-flash3
