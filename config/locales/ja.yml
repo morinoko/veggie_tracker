@@ -72,7 +72,7 @@ ja:
     not_authorized: それはできません！
     missing_fields: 全部の項目を入力してください。
     signup:
-      welcome: アカウントができました！ようこそ、 %{username}！
+      welcome: アカウントができました！ようこそ、%{username}！
       email_taken: このメールアドレスは既に使われています。
       name_taken: このユーザー名は既に使われています。
       error: エラーが起こりました。もう一度フォームを入力してみてください。
