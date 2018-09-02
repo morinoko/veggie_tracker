@@ -13,6 +13,12 @@
         	<a class="nav-item nav-link" href="/<%= I18n.locale %>/signup"><%= t('signup.submit') %></a>
           <a class="nav-item nav-link" href="/<%= I18n.locale %>/login"><%= t('login') %></a>
         <% end %>
+        
+        <% if I18n.locale == :en %>
+          <a class="nav-item nav-link" href="/ja/"><%= t('japanese') %></a>
+        <% else %>
+          <a class="nav-item nav-link" href="/en/"><%= t('english') %></a>
+        <% end %>
       </div>
     </div>
   </div>
