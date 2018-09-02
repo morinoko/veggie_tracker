@@ -6,7 +6,7 @@ class Vegetable < ActiveRecord::Base
   	months = {}
   	
   	months_to_integers(self[:planting_season]).each do |month|
-    	months[month] = t('month_names')[month]
+    	months[month] = localized_months[month]
     end
     
     months
@@ -26,4 +26,7 @@ class Vegetable < ActiveRecord::Base
   	data_saved_from_form.split(" ").collect { |month| month.to_i }
   end
   
+  def localized_months
+    I18n.t('date.month_names')
+  end
 end

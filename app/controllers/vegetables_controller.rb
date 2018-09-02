@@ -13,8 +13,8 @@ class VegetablesController < ApplicationController
   end
   
   post '/:locale/vegetables' do
-    params[:planting_season] = params[:planting_season].join(" ")
-    @vegetable = Vegetable.new(params)
+    params[:vegetable][:planting_season] = params[:vegetable][:planting_season].join(" ")
+    @vegetable = Vegetable.new(params[:vegetable])
     @vegetable.save
     
     redirect to "/#{I18n.locale}/users/#{current_user.slug}"
