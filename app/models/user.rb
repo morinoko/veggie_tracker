@@ -16,6 +16,7 @@ class User < ActiveRecord::Base
   end
   
   def self.find_by_slug(slug)
+    slug = CGI.escape(slug)
     User.find { |user| user.slug == slug }
   end
   
