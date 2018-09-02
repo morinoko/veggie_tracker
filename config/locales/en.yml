@@ -33,7 +33,7 @@ en:
         veggies: Veggies
       no_veggies: There aren't any veggies for this farm yet!
       add_veggie: Add a veggie
-      edit: Edit farm
+      edit_button: Edit farm
     form:
       name: Name of the Farm
       location: Location
