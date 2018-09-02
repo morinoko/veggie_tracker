@@ -18,6 +18,7 @@ class ApplicationController < Sinatra::Base
     I18n.load_path = Dir[File.join('config/locales', '*.yml')]
     I18n.backend.load_translations
     I18n.available_locales = [:en, :ja]
+    I18n.default_locale = :ja
 	end
 	
 	before '/:locale/*' do
@@ -25,7 +26,6 @@ class ApplicationController < Sinatra::Base
   end
 	
 	get '/:locale/' do
-  	#I18n.locale = params[:locale]
   	
   	if logged_in?
     	@user = current_user
@@ -33,6 +33,10 @@ class ApplicationController < Sinatra::Base
     
 		erb :index
 	end
+	
+	get '/' do
+  	redirect to "/#{I18n.default_locale}/"
+  end
 	
 	helpers do
 		def current_user
