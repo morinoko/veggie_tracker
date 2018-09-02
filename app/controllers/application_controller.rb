@@ -45,6 +45,10 @@ class ApplicationController < Sinatra::Base
 		def t(*args)
   		I18n.t(*args)
     end
+    
+    def l(*args)
+  		I18n.l(*args)
+    end
 		
 		def find_template(views, name, engine, &block)
       I18n.fallbacks[I18n.locale].each { |locale|
