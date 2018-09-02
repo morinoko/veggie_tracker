@@ -14,3 +14,64 @@ ja:
     catchphrase: その月に植える予定の野菜をお知らせしてくれるシンプルなアプリです。
     have_account: 既にアカウントをお持ちの方：
     login_now: こちらでログイン
+  this_month:
+    title: 今月植える野菜
+    no_veggies: 今月は植える野菜がない！リラックスできますね。
+    add_veggie: 野菜を追加する
+    dashboard_link: ダッシュボードを見る
+  users:
+    show:
+      subtitle:
+        farms: 私のファーム
+        veggies: 私の野菜
+      no_farms: ファームはまだありません！
+      no_veggies: 野菜はまだありません！
+      create_now: 今作る。
+  farms:
+    show:
+      subtitle:
+        veggies: 野菜
+      no_veggies: このファームには、まだ野菜がありません！
+      add_veggie: 野菜を追加する
+      edit_button: 野菜を編集する
+    form:
+      name: ファームの名前
+      location: ファームの場所
+      delete: ファームを削除
+      new:
+        title: 新しいファームを作る
+        submit: ファームを追加
+      edit:
+        title: ファームを編集する
+        submit: ファームを保存
+  vegetables:
+    show:
+      months: 植える月
+      edit_button: 野菜を編集
+    form:
+      details: 野菜の詳細
+      name: 野菜の名前
+      planting_months: 植える月
+      farms: ファーム
+      delete: 野菜を削除
+      new:
+        title: 新しい野菜を追加する
+        submit: 野菜を追加
+      edit:
+        title: 野菜を編集する
+        submit: 野菜を保存
+  notices:
+    login_required: それをするにはログインが必要です！
+    not_authorized: それはできません！
+    missing_fields: 全部の項目を入力してください。
+      signup:
+      welcome: アカウントができました！ようこそ、 %{username}！
+      email_taken: このメールアドレスは既に使われています。
+      name_taken: このユーザー名は既に使われています。
+      error: エラーが起こりました。もう一度フォームを入力してみてください。
+    login:
+      param_error: ユーザー名またはパスワードが正しくなかったです。もう一度ログインしてください。
+    not_found:
+      user: このユーザーは見つかりません。
+      farm: このファームは見つかりません。
+      vegetable: この野菜は見つかりません。
