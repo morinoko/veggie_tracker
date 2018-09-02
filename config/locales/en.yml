@@ -43,4 +43,21 @@ en:
         submit: Add farm
       edit:
         title: Edit farm
-        submit: Save
+        submit: Save farm
+  vegetables:
+    show:
+      months: Months to plant
+      edit_button: Edit veggie
+    form:
+      details: Veggie details
+      name: Name of vegetable
+      planting_months: Planting months
+      farms: Farms
+      delete: Delete veggie
+      new:
+        title: Add a veggie
+        submit: Add veggie
+      edit:
+        title: Edit veggie
+        submit: Save veggie
+      

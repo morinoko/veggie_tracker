@@ -1,18 +1,18 @@
 <div class="form card">
   <div class="card-header">
-    <h1>Add a veggie</h1>
+    <h1><%= t('vegetables.form.new.title') %></h1>
   </div>
   
   <div class="card-body">
     <form method="POST" action="/vegetables">
-      <h2>Veggie details</h2>
+      <h2><%= t('vegetables.form.details') %></h2>
       <div class="form-group">
-    		<label for="name">Name of vegetable</label>
+    		<label for="name"><%= t('vegetables.form.name') %></label>
     		<input type="text" id="name" name="name" class="form-control">
     	</div>
     	
     	<div class="form-group">
-    	  <p>Planting months:</p>
+    	  <p><%= t('vegetables.form.planting_months') %></p>
     	
       	<% Date::MONTHNAMES.each.with_index do |month, index| %>
       	  <% if index >= 1 %>
@@ -24,7 +24,7 @@
       	<% end %>
     	</div>
     	
-    	<h2>Farms</h2>
+    	<h2><%= t('vegetables.form.farms') %></h2>
     	<div class="form-group">
       	<% @user.farms.each do |farm| %>
         	<div class="form-check">
@@ -34,7 +34,7 @@
       	<% end %>
     	</div>
     	
-    	<button type="submit" id="submit" class="btn btn-info">Add veggie</button>
+    	<button type="submit" id="submit" class="btn btn-info"><%= t('vegetables.form.new.submit') %></button>
     </form>
   </div>
 </div>

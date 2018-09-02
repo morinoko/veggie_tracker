@@ -9,7 +9,7 @@
   </div>
 
   <div class="card-body">
-    <h2>Months to plant</h2>
+    <h2><%= t('vegetables.show.months') %></h2>
     <ul>
     <% @vegetable.planting_season_month_names.each do |month| %>
       <li><%= month %></li>
@@ -19,7 +19,7 @@
     
   <% if current_user == @vegetable.user %>
     <div class="card-footer">
-      <a href="/vegetables/<%= @vegetable.id %>/edit" class="card-link">Edit</a>
+      <a href="/vegetables/<%= @vegetable.id %>/edit" class="card-link"><%= t('vegetables.show.edit_button') %></a>
     </div>
   <% end %>
   
