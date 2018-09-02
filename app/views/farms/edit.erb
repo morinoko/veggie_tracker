@@ -8,13 +8,13 @@
       <input type="hidden" id="hidden" name="_method" value="patch">
       
       <div class="form-group">
-    		<label for="name"><%= t('farms.form.name') %></label>
-    		<input type="text" id="name" name="name" class="form-control" value="<%= @farm.name %>">
+    		<label for="farm[name]"><%= t('farms.form.name') %></label>
+    		<input type="text" id="name" name="farm[name]" class="form-control" value="<%= @farm.name %>">
     	</div>
     	
     	<div class="form-group">
-    		<label for="location"><%= t('farms.form.location') %></label>
-    		<input type="text" id="location" name="location" class="form-control" value="<%= @farm.location %>">
+    		<label for="farm[location]"><%= t('farms.form.location') %></label>
+    		<input type="text" id="location" name="farm[location]" class="form-control" value="<%= @farm.location %>">
     	</div>
     	
     	<button type="submit" id="save" class="btn btn-info"><%= t('farms.form.edit.submit') %></button>

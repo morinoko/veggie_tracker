@@ -11,7 +11,7 @@ class FarmsController < ApplicationController
   end
   
   post '/:locale/farms' do
-    @farm = Farm.new(name: params[:name], location: params[:location])
+    @farm = Farm.new(params[:farm])
     
     if @farm.save
       @farm.user = current_user
@@ -40,7 +40,7 @@ class FarmsController < ApplicationController
   patch '/:locale/farms/:id/:slug' do
     @farm = Farm.find_by(id: params[:id])
     
-    @farm.update(name: params[:name], location: params[:location])
+    @farm.update(params[:farm])
     
     redirect to "/#{I18n.locale}/farms/#{@farm.id}/#{@farm.slug}"
   end
