@@ -34,7 +34,7 @@ ja:
         veggies: 野菜
       no_veggies: このファームには、まだ野菜がありません！
       add_veggie: 野菜を追加する
-      edit_button: 野菜を編集する
+      edit_button: ファームを編集する
     form:
       name: ファームの名前
       location: ファームの場所
