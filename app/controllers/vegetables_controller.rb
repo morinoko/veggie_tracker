@@ -1,6 +1,6 @@
 class VegetablesController < ApplicationController
   
-  get '/vegetables/new' do
+  get '/:locale/vegetables/new' do
     if logged_in?
       @user = current_user
       
@@ -12,7 +12,7 @@ class VegetablesController < ApplicationController
     end
   end
   
-  post '/vegetables' do
+  post '/:locale/vegetables' do
     params[:planting_season] = params[:planting_season].join(" ")
     @vegetable = Vegetable.new(params)
     @vegetable.save
@@ -20,7 +20,7 @@ class VegetablesController < ApplicationController
     redirect to "/#{I18n.locale}/users/#{current_user.slug}"
   end
   
-  get '/vegetables/:id' do
+  get '/:locale/vegetables/:id' do
     @vegetable = Vegetable.find_by(id: params[:id])
     
     if @vegetable
@@ -32,7 +32,7 @@ class VegetablesController < ApplicationController
     end
   end
   
-  patch '/vegetables/:id' do
+  patch '/:locale/vegetables/:id' do
     params[:vegetable][:planting_season] = params[:vegetable][:planting_season].join(" ")
     @vegetable = Vegetable.find_by(id: params[:id])
     
@@ -41,7 +41,7 @@ class VegetablesController < ApplicationController
     redirect to "/#{I18n.locale}/vegetables/#{@vegetable.id}"
   end
   
-  delete '/vegetables/:id' do
+  delete '/:locale/vegetables/:id' do
     if logged_in?
       @vegetable = Vegetable.find_by(id: params[:id])
     
@@ -61,7 +61,7 @@ class VegetablesController < ApplicationController
     end
   end
   
-  get '/vegetables/:id/edit' do
+  get '/:locale/vegetables/:id/edit' do
     if logged_in?
       @vegetable = Vegetable.find_by(id: params[:id])
     

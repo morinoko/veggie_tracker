@@ -1,6 +1,6 @@
 class FarmsController < ApplicationController
   
-  get '/farms/new' do
+  get '/:locale/farms/new' do
     if logged_in?
       erb :'farms/new'
     else
@@ -10,7 +10,7 @@ class FarmsController < ApplicationController
     end
   end
   
-  post '/farms' do
+  post '/:locale/farms' do
     @farm = Farm.new(name: params[:name], location: params[:location])
     
     if @farm.save
@@ -25,7 +25,7 @@ class FarmsController < ApplicationController
     end
   end
   
-  get '/farms/:id/:slug' do
+  get '/:locale/farms/:id/:slug' do
     @farm = Farm.find_by(id: params[:id])
     
     if @farm
@@ -37,7 +37,7 @@ class FarmsController < ApplicationController
     end
   end
   
-  patch '/farms/:id/:slug' do
+  patch '/:locale/farms/:id/:slug' do
     @farm = Farm.find_by(id: params[:id])
     
     @farm.update(name: params[:name], location: params[:location])
@@ -45,7 +45,7 @@ class FarmsController < ApplicationController
     redirect to "/#{I18n.locale}/farms/#{@farm.id}/#{@farm.slug}"
   end
   
-  delete '/farms/:id/:slug' do
+  delete '/:locale/farms/:id/:slug' do
     @farm = Farm.find_by(id: params[:id])
     @user = @farm.user
     
@@ -60,7 +60,7 @@ class FarmsController < ApplicationController
     end
   end
   
-  get '/farms/:id/:slug/edit' do
+  get '/:locale/farms/:id/:slug/edit' do
     if logged_in?
       @farm = Farm.find_by(id: params[:id])
     

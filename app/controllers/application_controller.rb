@@ -21,11 +21,12 @@ class ApplicationController < Sinatra::Base
 	end
 	
 	before '/:locale/*' do
-    I18n.locale       =       params[:locale]
-    request.path_info = '/' + params[:splat ][0]
+    I18n.locale = params[:locale]
   end
 	
-	get '/' do
+	get '/:locale/' do
+  	#I18n.locale = params[:locale]
+  	
   	if logged_in?
     	@user = current_user
     end

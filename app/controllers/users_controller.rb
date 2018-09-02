@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   
-  get '/signup' do
+  get '/:locale/signup' do
     if logged_in?
       redirect to "/#{I18n.locale}/"
     else
@@ -8,7 +8,7 @@ class UsersController < ApplicationController
     end
   end
 
-  post '/signup' do
+  post '/:locale/signup' do
     @user = User.new(username: params[:username], email: params[:email], password: params[:password])
 
     if @user.save
@@ -32,7 +32,7 @@ class UsersController < ApplicationController
     end
   end
 
-  get '/login' do
+  get '/:locale/login' do
     if logged_in?
       redirect to "/#{I18n.locale}/users/#{current_user.slug}"
     else
@@ -40,7 +40,7 @@ class UsersController < ApplicationController
     end
   end
   
-  post '/login' do
+  post '/:locale/login' do
     @user = User.find_by(username: params[:username])
 
     if @user && @user.authenticate(params[:password])
@@ -54,7 +54,7 @@ class UsersController < ApplicationController
     end
   end
 
-  get '/logout' do
+  get '/:locale/logout' do
     if logged_in?
       session.destroy
       redirect to "/#{I18n.locale}/"
@@ -63,7 +63,7 @@ class UsersController < ApplicationController
     end
   end
   
-  get '/users/:slug' do
+  get '/:locale/users/:slug' do
     @user = User.find_by_slug(params[:slug])
     
     if @user
