@@ -1,6 +1,10 @@
 # Veggie Tracker
 
-This is a simple ruby app that will allow you to keep track of what vegetables you planted and when. It is a work in progress!
+This is a simple ruby app that will allow you to keep track of what vegetables you planted and when.
+
+Localized to English and Japanese. You can try the app out here:
+ - English: https://veggie-tracker.herokuapp.com/en/
+ - Japanese: https://veggie-tracker.herokuapp.com/ja/
 
 ## TODO
 
@@ -17,5 +21,5 @@ This is a simple ruby app that will allow you to keep track of what vegetables y
 - [x] Users can edit vegetables
 - [x] Users can delete vegetables
 
-- [ ] Users can see which vegetables should be planted this month when viewing their dashboard
-
+- [x] Users can see which vegetables should be planted this month when viewing their dashboard
+- [x] Allow users to use either English or Japanese
