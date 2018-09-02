@@ -18,7 +18,7 @@ class ApplicationController < Sinatra::Base
     I18n.load_path = Dir[File.join('config/locales', '*.yml')]
     I18n.backend.load_translations
     I18n.available_locales = [:en, :ja]
-    I18n.default_locale = :ja
+    I18n.default_locale = :en
 	end
 	
 	before '/:locale/*' do
