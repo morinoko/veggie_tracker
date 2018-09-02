@@ -3,6 +3,10 @@ require 'pry'
 
 RSpec.describe VegetablesController, :type => :controller do
   
+  before do
+    @locale = "en"
+  end
+  
   describe "vegetable show page" do
     before do
       @user = User.create(username: "Joe Farmer", email: "joe@aol.com", password: "farmer")
@@ -12,7 +16,7 @@ RSpec.describe VegetablesController, :type => :controller do
     end
     
     it "loads the vegetable page" do
-      get "/vegetables/#{@vegetable.id}"
+      get "/#{@locale}/vegetables/#{@vegetable.id}"
       
       expect(last_response.status).to eq(200)
       expect(last_response.body).to include(@vegetable.name)
@@ -29,13 +33,13 @@ RSpec.describe VegetablesController, :type => :controller do
     
     context "logged in" do
       it "loads the new vegetable form" do
-        visit '/login'
+        visit "/#{@locale}/login"
         
         fill_in(:username, with: "Ria")
         fill_in(:password, with: "meow")
         click_button 'submit'
         
-        visit '/vegetables/new'
+        visit "/#{@locale}/vegetables/new"
         
         expect(page.status_code).to eq(200)
         expect(page.body).to include("Add veggie")
@@ -44,11 +48,11 @@ RSpec.describe VegetablesController, :type => :controller do
     
     context "logged out" do
       it "redirects the user to login" do
-        get '/vegetables/new'
+        get "/#{@locale}/vegetables/new"
         
         expect(last_response.redirect?).to be_truthy
         follow_redirect!
-        expect(last_request.path).to eq('/login')
+        expect(last_request.path).to eq("/#{@locale}/login")
       end
     end
   end
@@ -63,7 +67,7 @@ RSpec.describe VegetablesController, :type => :controller do
       @other_user_vegetable = Vegetable.create(name: "Parsnips", planting_season: "5")
       @other_user_farm.vegetables << @other_user_vegetable
       
-      visit '/login'
+      visit "/#{@locale}/login"
       
       fill_in(:username, with: "Ria")
       fill_in(:password, with: "meow")
@@ -71,7 +75,7 @@ RSpec.describe VegetablesController, :type => :controller do
     end
     
     it "lets the user create a new vegetable" do
-      visit '/vegetables/new'
+      visit "/#{@locale}/vegetables/new"
       
       fill_in(:name, with: "Rhubarb")
       check('April')
@@ -85,7 +89,7 @@ RSpec.describe VegetablesController, :type => :controller do
       vegetable = Vegetable.create(name: "Carrots", planting_season: "3 4 5")
       @farm.vegetables << vegetable
       
-      visit "/vegetables/#{vegetable.id}/edit"
+      visit "/#{@locale}/vegetables/#{vegetable.id}/edit"
       expect(page.status_code).to eq(200)
       
       fill_in(:name, with: "Yellow Carrots")
@@ -103,7 +107,7 @@ RSpec.describe VegetablesController, :type => :controller do
     xit "does not allow users to edit another user's vegetable" do
       # for some reason redirects to login instead of root?
       
-      get "/vegetables/#{@other_user_vegetable.id}/edit"
+      get "/#{@locale}/vegetables/#{@other_user_vegetable.id}/edit"
       
       expect(last_response.redirect?).to be_truthy
       follow_redirect!
@@ -114,7 +118,7 @@ RSpec.describe VegetablesController, :type => :controller do
       vegetable = Vegetable.create(name: "Carrots", planting_season: "3 4 5")
       @farm.vegetables << vegetable
       
-      visit "/vegetables/#{vegetable.id}/edit"
+      visit "/#{@locale}/vegetables/#{vegetable.id}/edit"
       
       click_button 'delete'
       expect(Vegetable.find_by(name: "Carrots")).to eq(nil)

@@ -3,12 +3,16 @@ require 'pry'
 
 RSpec.describe FarmsController, :type => :controller do
   
+  before do
+    @locale = "en"
+  end
+  
   describe "farm show page" do
     before do
       @user = User.create(username: "Ria", email: "ria@gmail.com", password: "meow")
       @farm = Farm.create(name: "Cattail Farm", location: "Ohio", user_id: @user.id)
       
-      visit '/login'
+      visit "/#{@locale}/login"
       
       fill_in(:username, with: "Ria")
       fill_in(:password, with: "meow")
@@ -16,7 +20,7 @@ RSpec.describe FarmsController, :type => :controller do
     end
     
     it "loads the farm page" do
-      get "/farms/#{@farm.id}/#{@farm.slug}"
+      get "/#{@locale}/farms/#{@farm.id}/#{@farm.slug}"
       
       expect(last_response.status).to eq(200)
       expect(last_response.body).to include(@farm.name)
@@ -31,13 +35,13 @@ RSpec.describe FarmsController, :type => :controller do
     
     context "logged in" do
       it "loads the new farm form" do
-        visit '/login'
+        visit "/#{@locale}/login"
         
         fill_in(:username, with: "Ria")
         fill_in(:password, with: "meow")
         click_button 'submit'
         
-        visit '/farms/new'
+        visit "/#{@locale}/farms/new"
         
         expect(page.status_code).to eq(200)
         expect(page.body).to include("Create a new farm")
@@ -46,9 +50,9 @@ RSpec.describe FarmsController, :type => :controller do
     
     context "logged out" do
       it "redirects the user to login" do
-        get '/farms/new'
+        get "/#{@locale}/farms/new"
         
-        expect(last_response.location).to include('/login')
+        expect(last_response.location).to include("/#{@locale}/login")
       end
     end
   end
@@ -57,13 +61,13 @@ RSpec.describe FarmsController, :type => :controller do
     it "lets user create a new farm" do
       user = User.create(username: "Ria", email: "ria@gmail.com", password: "meow")
       
-      visit '/login'
+      visit "/#{@locale}/login"
       
       fill_in(:username, with: "Ria")
       fill_in(:password, with: "meow")
       click_button 'submit'
       
-      visit '/farms/new'
+      visit "/#{@locale}/farms/new"
       
       fill_in(:name, with: "My Farm")
       fill_in(:location, with: "Catland")
@@ -73,7 +77,7 @@ RSpec.describe FarmsController, :type => :controller do
       expect(farm).to be_instance_of(Farm)
       expect(farm.user_id).to eq(user.id)
       
-      visit "/farms/#{farm.id}/#{farm.slug}"
+      visit "/#{@locale}/farms/#{farm.id}/#{farm.slug}"
       expect(page.status_code).to eq(200)
     end
   end
@@ -83,7 +87,7 @@ RSpec.describe FarmsController, :type => :controller do
       @user = User.create(username: "Ria", email: "ria@gmail.com", password: "meow")
       @farm = Farm.create(name: "Cattail Farm", location: "Ohio", user_id: @user.id)
       
-      visit '/login'
+      visit "/#{@locale}/login"
       
       fill_in(:username, with: "Ria")
       fill_in(:password, with: "meow")
@@ -92,7 +96,7 @@ RSpec.describe FarmsController, :type => :controller do
     
     context "logged in" do
       it "lets user edit a farm" do
-        visit "/farms/#{@farm.id}/#{@farm.slug}/edit"
+        visit "/#{@locale}/farms/#{@farm.id}/#{@farm.slug}/edit"
         
         fill_in(:name, with: "Cattail Farm Edited")
         fill_in(:location, with: "Catlandia")
@@ -105,15 +109,15 @@ RSpec.describe FarmsController, :type => :controller do
     
     context "logged out" do
       it "does not allow logged out user to edit a farm" do
-        get '/logout'
-        get "/farms/#{@farm.id}/#{@farm.slug}/edit"
+        get "/#{@locale}/logout"
+        get "/#{@locale}/farms/#{@farm.id}/#{@farm.slug}/edit"
         
-        expect(last_response.location).to include("/")
+        expect(last_response.location).to include("/#{@locale}/")
       end
       
       it "does not show the edit button on the farm page" do
-        get '/logout'
-        get "/farms/#{@farm.id}/#{@farm.slug}"
+        get "/#{@locale}/logout"
+        get "/#{@locale}/farms/#{@farm.id}/#{@farm.slug}"
         
         expect(last_response.body).to_not include("Edit farm")
       end
@@ -125,13 +129,13 @@ RSpec.describe FarmsController, :type => :controller do
       @user = User.create(username: "Ria", email: "ria@gmail.com", password: "meow")
       @farm = Farm.create(name: "Cattail Farm", location: "Ohio", user_id: @user.id)
       
-      visit '/login'
+      visit "/#{@locale}/login"
       
       fill_in(:username, with: "Ria")
       fill_in(:password, with: "meow")
       click_button 'submit'
       
-      visit "/farms/#{@farm.id}/#{@farm.slug}/edit"
+      visit "/#{@locale}/farms/#{@farm.id}/#{@farm.slug}/edit"
       
       click_button 'delete'
       expect(Farm.find_by(name: "Cattail Farm")).to eq(nil)

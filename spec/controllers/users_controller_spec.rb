@@ -3,13 +3,17 @@ require 'pry'
 
 RSpec.describe UsersController, :type => :controller do
   
+  before do
+    @locale = "en"
+  end
+  
   describe "Signup Page" do
     
     it "loads the signup page" do
-      get '/signup'
+      get "/#{@locale}/signup"
       
       expect(last_response.status).to eq(200)
-      expect(last_response.body).to include("Signup")
+      expect(last_response.body).to include("Sign up")
     end
     
     context "successful signup" do
@@ -20,10 +24,10 @@ RSpec.describe UsersController, :type => :controller do
           :password => "cowboy"
         }
         
-        post '/signup', params
+        post "/#{@locale}/signup", params
         expect(last_response.redirect?).to be_truthy
         follow_redirect!
-        expect(last_request.path).to eq('/users/rider')
+        expect(last_request.path).to eq("/#{@locale}/users/rider")
         expect(last_response.body).to include("Welcome Rider!")
       end
     end
@@ -36,9 +40,9 @@ RSpec.describe UsersController, :type => :controller do
           :password => "cowboy"
         }
         
-        post '/signup', params
+        post "/#{@locale}/signup", params
         follow_redirect!
-        expect(last_request.path).to eq('/signup')
+        expect(last_request.path).to eq("/#{@locale}/signup")
         expect(last_response.body).to include("Try the form again.")
       end
         
@@ -49,9 +53,9 @@ RSpec.describe UsersController, :type => :controller do
           :password => "cowboy"
         }
         
-        post '/signup', params
+        post "/#{@locale}/signup", params
         follow_redirect!
-        expect(last_request.path).to eq('/signup')
+        expect(last_request.path).to eq("/#{@locale}/signup")
         expect(last_response.body).to include("Try the form again.")
       end
       
@@ -62,9 +66,9 @@ RSpec.describe UsersController, :type => :controller do
           :password => ""
         }
         
-        post '/signup', params
+        post "/#{@locale}/signup", params
         follow_redirect!
-        expect(last_request.path).to eq('/signup')
+        expect(last_request.path).to eq("/#{@locale}/signup")
         expect(last_response.body).to include("Try the form again.")
       end
       
@@ -75,10 +79,10 @@ RSpec.describe UsersController, :type => :controller do
           :password => "cowboy"
         }
         
-        post '/signup', params
+        post "/#{@locale}/signup", params
         follow_redirect!
-        expect(last_request.path).to eq('/users/rider')
-        expect(last_response.body).to include("Welcome Rider!")
+        expect(last_request.path).to eq("/#{@locale}/users/rider")
+        expect(User.find_by(username: "Rider")).to be_truthy
         
         get '/logout'
         
@@ -88,10 +92,10 @@ RSpec.describe UsersController, :type => :controller do
           :password => "double"
         }
         
-        post '/signup', params_2
+        post "/#{@locale}/signup", params_2
         follow_redirect!
-        expect(last_request.path).to eq('/signup')
-        expect(last_response.body).to include("This email is already taken.")
+        expect(last_request.path).to eq("/#{@locale}/signup")
+        expect(User.find_by(username: "Duplicate Rider")).to be_nil
       end
       
       it "does not let allow duplicate username (slug) sign-ups" do
@@ -101,10 +105,10 @@ RSpec.describe UsersController, :type => :controller do
           :password => "cowboy"
         }
         
-        post '/signup', params
+        post "/#{@locale}/signup", params
         follow_redirect!
-        expect(last_request.path).to eq('/users/rider')
-        expect(last_response.body).to include("Welcome Rider!")
+        expect(last_request.path).to eq("/#{@locale}/users/rider")
+        expect(User.find_by(username: "Rider")).to be_truthy
         
         get '/logout'
         
@@ -114,10 +118,10 @@ RSpec.describe UsersController, :type => :controller do
           :password => "double"
         }
         
-        post '/signup', params_2
+        post "/#{@locale}/signup", params_2
         follow_redirect!
-        expect(last_request.path).to eq('/signup')
-        expect(last_response.body).to include("This name is already taken.")
+        expect(last_request.path).to eq("/#{@locale}/signup")
+        expect(User.find_by(email: "the_other_rider@aol.com")).to be_nil
       end
 
 
@@ -127,10 +131,10 @@ RSpec.describe UsersController, :type => :controller do
   describe "Logging out" do
     
     it 'redirects user to the homepage' do
-      get '/logout'
+      get "/#{@locale}/logout"
       
       follow_redirect!
-      expect(last_request.path).to eq('/')
+      expect(last_request.path).to eq("/#{@locale}/")
       expect(last_response.body).to include("Login")
     end
   end
@@ -142,10 +146,10 @@ RSpec.describe UsersController, :type => :controller do
     
     context "logged out" do
       it "loads the login page" do
-        get '/login'
+        get "/#{@locale}/login"
         
         expect(last_response.status).to eq(200)
-        expect(last_request.path).to eq('/login')
+        expect(last_request.path).to eq("/#{@locale}/login")
       end
     end
     
@@ -156,12 +160,12 @@ RSpec.describe UsersController, :type => :controller do
           :password => "meow"
         }
         
-        post '/login', params
+        post "/#{@locale}/login", params
         
-        get '/login'
+        get "/#{@locale}/login"
         
         follow_redirect!
-        expect(last_request.path).to eq('/users/ria')
+        expect(last_request.path).to eq("/#{@locale}/users/ria")
       end
     end
     
@@ -172,11 +176,10 @@ RSpec.describe UsersController, :type => :controller do
           :password => "meow"
         }
         
-        post '/login', params
+        post "/#{@locale}/login", params
         
         follow_redirect!
-        expect(last_request.path).to eq('/users/ria')
-        expect(last_response.body).to include("Welcome, Ria!")
+        expect(last_request.path).to eq("/#{@locale}/users/ria")
       end
     end
     
@@ -187,9 +190,9 @@ RSpec.describe UsersController, :type => :controller do
           :password => "meow"
         }
         
-        post '/login', params
+        post "/#{@locale}/login", params
         
-        expect(last_response.location).to include('/login')
+        expect(last_response.location).to include("/#{@locale}/login")
       end
       
       it "does not user sign in with wrong password" do
@@ -198,9 +201,9 @@ RSpec.describe UsersController, :type => :controller do
           :password => "meow_oops"
         }
         
-        post '/login', params
+        post "/#{@locale}/login", params
         
-        expect(last_response.location).to include('/login')
+        expect(last_response.location).to include("/#{@locale}/login")
       end
     end
   end
@@ -210,7 +213,7 @@ RSpec.describe UsersController, :type => :controller do
     it "loads the user show page" do
       user = User.create(:username => "Ria", :email => "ria@aol.com", :password => "meow")
       
-      get '/users/ria'
+      get "/#{@locale}/users/ria"
       
       expect(last_response.status).to eq(200)
     end
