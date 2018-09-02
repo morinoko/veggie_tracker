@@ -27,7 +27,7 @@ en:
         veggies: My Veggies
       no_farms: You don't have any farms yet!
       no_veggies: You don't have any veggies yet!
-      create_now: Create one now
+      create_now: Create one now.
   farms:
     show:
       subtitle:
