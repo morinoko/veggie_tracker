@@ -18,6 +18,8 @@ en:
     login_now: Login now
   this_month:
     title: Veggies to plant this month
+    no_farms: You don't have any farms yet!
+    add_farm: Add a farm now.
     no_veggies: There are no veggies to plant this month! Go and relax ;)
     add_veggie: Add another veggie
     dashboard_link: Go to Dashboard
