@@ -6,6 +6,10 @@ RSpec.describe 'Vegetable' do
     @farm.vegetables << @vegetable
   end
   
+  it "knows its farms" do
+    expect(@vegetable.farms).to include(@farm)
+  end
+  
   it "can find its user" do
     expect(@vegetable.user).to eq(@user)
   end
