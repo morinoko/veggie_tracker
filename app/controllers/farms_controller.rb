@@ -4,7 +4,7 @@ class FarmsController < ApplicationController
     if logged_in?
       erb :'farms/new'
     else
-      flash[:notice] = "You need to be logged in to do that!"
+      flash[:notice] = t('notices.login_required')
       
       redirect to "/#{I18n.locale}/login"
     end
@@ -19,7 +19,7 @@ class FarmsController < ApplicationController
       
       redirect to "/#{I18n.locale}/farms/#{@farm.id}/#{@farm.slug}"
     else
-      flash[:notice] = "Please fill in all the fields."
+      flash[:notice] = t('notices.missing_fields')
       
       redirect to "/#{I18n.locale}/farms/new"
     end
@@ -31,7 +31,7 @@ class FarmsController < ApplicationController
     if @farm
       erb :'farms/show'
     else
-      flash[:notice] = "This farm doesn't seem to exist..."
+      flash[:notice] = t('notices.not_found.farm')
       
       redirect to "/#{I18n.locale}/"
     end
@@ -54,7 +54,7 @@ class FarmsController < ApplicationController
     
       redirect to "/#{I18n.locale}/users/#{@user.slug}"
     else
-      flash[:notice] = "You aren't permitted to do that!"
+      flash[:notice] = t('notices.not_authorized')
       
       redirect to "/#{I18n.locale}/"
     end
@@ -67,11 +67,11 @@ class FarmsController < ApplicationController
       if current_user == @farm.user
         erb :'farms/edit'
       else
-        flash[:notice] = "You aren't permitted to do that!"
+        flash[:notice] = t('notices.not_authorized')
         redirect to "/#{I18n.locale}/"
       end
     else
-      flash[:notice] = "You need to login to edit farms!"
+      flash[:notice] = t('notices.login_required')
       redirect to "/#{I18n.locale}/login"
     end
   end

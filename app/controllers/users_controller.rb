@@ -12,21 +12,21 @@ class UsersController < ApplicationController
     @user = User.new(username: params[:username], email: params[:email], password: params[:password])
 
     if @user.save
-      flash[:notice] = "You've successfully signed up! Welcome #{@user.username}!"
+      flash[:notice] = t('notices.signup.welcome', username: @user.username)
 
       session[:user_id] = @user.id
 
       redirect to "/#{I18n.locale}/users/#{@user.slug}"
     elsif User.find_by(email: params[:email])
-      flash[:notice] = "This email is already taken."
+      flash[:notice] = t('notices.signup.email_taken')
        
       redirect to "/#{I18n.locale}/signup"
     elsif User.find_by_slug(@user.slug)
-      flash[:notice] = "This name is already taken."
+      flash[:notice] = t('notices.signup.name_taken')
       
       redirect to "/#{I18n.locale}/signup"
     else
-      flash[:notice] = "Looks like something went wrong. Try the form again."
+      flash[:notice] = t('notices.signup.error')
 
       redirect to "/#{I18n.locale}/signup"
     end
@@ -49,7 +49,7 @@ class UsersController < ApplicationController
 
       redirect to "/#{I18n.locale}/users/#{@user.slug}"
     else
-      flash[:notice] = "Your username or password was incorrect! Please try again."
+      flash[:notice] = t('notices.login.param_error')
 
       redirect to "/#{I18n.locale}/login"
     end
@@ -70,7 +70,7 @@ class UsersController < ApplicationController
     if @user
       erb :'users/show'
     else
-      flash[:notice] = "This user doesn't seem to exist..."
+      flash[:notice] = t('notices.not_found.user')
       
       redirect to "/#{I18n.locale}/"
     end

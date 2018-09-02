@@ -6,7 +6,7 @@ class VegetablesController < ApplicationController
       
       erb :'vegetables/new'
     else
-     flash[:notice] = "You need to be logged in to do that!"
+     flash[:notice] = t('notices.login_required')
      
      redirect to "/#{I18n.locale}/login"
     end
@@ -26,7 +26,7 @@ class VegetablesController < ApplicationController
     if @vegetable
       erb :'vegetables/show'
     else
-      flash[:notice] = "This veggie doesn't seem to exist..."
+      flash[:notice] = t('notices.not_found.vegetable')
       
       redirect to "/#{I18n.locale}/"
     end
@@ -50,12 +50,12 @@ class VegetablesController < ApplicationController
         
         redirect to "/#{I18n.locale}/users/#{@user.slug}"
       else
-        flash[:notice] = "You aren't permitted to do that!"
+        flash[:notice] = t('notices.not_authorized')
         
         redirect to "/#{I18n.locale}/"
       end
     else
-      flash[:notice] = "You need to login to do that!"
+      flash[:notice] = t('notices.login_required')
       
       redirect to "/#{I18n.locale}/login"
     end
@@ -69,12 +69,12 @@ class VegetablesController < ApplicationController
         @user = current_user
         erb :'vegetables/edit'
       else
-        flash[:notice] = "You can only edit your own vegetables!"
+        flash[:notice] = t('notices.not_authorized')
         
         redirect to "/#{I18n.locale}/"
       end
     else
-      flash[:notice] = "You need to login to do that!"
+      flash[:notice] = t('notices.login_required')
       
       redirect to "/#{I18n.locale}/login"
     end

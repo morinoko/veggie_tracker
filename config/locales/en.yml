@@ -15,7 +15,7 @@ en:
     have_account: Have an account?
     login_now: Login now
   this_month:
-    title: Veggies to plant this month:
+    title: Veggies to plant this month
     no_veggies: There are no veggies to plant this month! Go and relax ;)
     add_veggie: Add another veggie
     dashboard_link: Go to Dashboard
@@ -60,3 +60,18 @@ en:
       edit:
         title: Edit veggie
         submit: Save veggie
+  notices:
+    login_required: You need to be logged in to do that!
+    not_authorized: You aren't permitted to do that!
+    missing_fields: Please fill in all the fields.
+    signup:
+      welcome: You've successfully signed up! Welcome %{username}!
+      email_taken: This email is already taken.
+      name_taken: This name is already taken.
+      error: Looks like something went wrong. Try the form again.
+    login:
+      param_error: Your username or password was incorrect! Please try again.
+    not_found:
+      user: This user doesn't seem to exist...
+      farm: This farm doesn't seem to exist...
+      vegetable: This vegetable doesn't seem to exist...
