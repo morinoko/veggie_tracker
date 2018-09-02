@@ -1,3 +1,5 @@
+require 'cgi'
+
 class Farm < ActiveRecord::Base
 	belongs_to :user
 	has_many :farm_vegetables
@@ -7,6 +9,7 @@ class Farm < ActiveRecord::Base
 	validates :location, presence: true
 	
 	def slug
-  	name.downcase.gsub(" ", "-").gsub("'", "")
+  	slug = name.downcase.gsub(" ", "-").gsub("'", "")
+  	CGI.escape(slug)
   end
 end

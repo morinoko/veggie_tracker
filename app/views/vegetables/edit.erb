@@ -16,7 +16,7 @@
     	<div class="form-group">
     	  <p><%= t('vegetables.form.planting_months') %></p>
     	
-      	<% Date::MONTHNAMES.each.with_index do |month, index| %>
+      	<% t('date.month_names').each.with_index do |month, index| %>
       	  <% if index >= 1 %>
           	<div class="form-check">
             	<input class="form-check-input" type="checkbox" name="vegetable[planting_season][]" value="<%= index %>" id="<%= month %>" <%= 'checked' if @vegetable.planting_season.include?(index) %>>

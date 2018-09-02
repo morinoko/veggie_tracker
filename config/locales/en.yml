@@ -61,6 +61,9 @@ en:
       edit:
         title: Edit veggie
         submit: Save veggie
+  date:
+    month_names: [~, "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
+    abbr_month_names: [~, "Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
   notices:
     login_required: You need to be logged in to do that!
     not_authorized: You aren't permitted to do that!

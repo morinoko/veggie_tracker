@@ -6,7 +6,7 @@ class Vegetable < ActiveRecord::Base
   	months = {}
   	
   	months_to_integers(self[:planting_season]).each do |month|
-    	months[month] = Date::MONTHNAMES[month]
+    	months[month] = t('month_names')[month]
     end
     
     months
