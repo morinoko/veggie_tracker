@@ -3,7 +3,7 @@
     <h1><%= @vegetable.name %></h1>
     <span class="card-meta">
     <% @vegetable.farms.each do |farm| %>
-      <a href="/farms/<%= farm.id %>/<%= farm.slug %>"><%= farm.name %></a><%= ' | ' unless farm == @vegetable.farms.last %>
+      <a href="/<%= I18n.locale %>/farms/<%= farm.id %>/<%= farm.slug %>"><%= farm.name %></a><%= ' | ' unless farm == @vegetable.farms.last %>
     <% end %>
     </span>
   </div>
@@ -19,7 +19,7 @@
     
   <% if current_user == @vegetable.user %>
     <div class="card-footer">
-      <a href="/vegetables/<%= @vegetable.id %>/edit" class="card-link"><%= t('vegetables.show.edit_button') %></a>
+      <a href="/<%= I18n.locale %>/vegetables/<%= @vegetable.id %>/edit" class="card-link"><%= t('vegetables.show.edit_button') %></a>
     </div>
   <% end %>
   

@@ -2,7 +2,7 @@
   <div id="signup-form" class="col-12 col-lg-8">
     <div class="jumbotron">
       <h1><%= t('signup.title') %></h1>
-      <form action="/signup" method="POST">
+      <form action="/<%= I18n.locale %>/signup" method="POST">
       	<div class="form-group">
       		<label for="username"><%= t('username') %></label>
       		<input type="text" id="username" name="username" class="form-control">

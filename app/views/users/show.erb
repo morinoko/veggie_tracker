@@ -2,7 +2,7 @@
   <section id="farms" class="card">
     <div class="card-header">
       <h2><%= t('users.show.subtitle.farms') %></h2>
-      <a href="/farms/new" class="add-button">+</a>
+      <a href="/<%= I18n.locale %>/farms/new" class="add-button">+</a>
     </div>
     
     <div class="card-body">
@@ -11,7 +11,7 @@
           <div class="card nested-card">
             <div class="card-body">
               <h3>
-                <a href="/farms/<%= farm.id %>/<%= farm.slug %>"><%= farm.name %></a>
+                <a href="/<%= I18n.locale %>/farms/<%= farm.id %>/<%= farm.slug %>"><%= farm.name %></a>
               </h3>
               <ul>
               <% farm.vegetables.each do |vegetable| %>
@@ -22,7 +22,7 @@
           </div>
         <% end %>
       <% else %>
-        <p>Y<%= t('users.show.no_farms') %> <a href="/farms/new"><%= t('users.show.create_now') %></a>.</p>
+        <p><%= t('users.show.no_farms') %> <a href="/<%= I18n.locale %>/farms/new"><%= t('users.show.create_now') %></a>.</p>
       <% end %>
     </div>
   </section>
@@ -30,7 +30,7 @@
   <section id="vegetables" class="card">
     <div class="card-header">
       <h2><%= t('users.show.subtitle.veggies') %></h2>
-      <a href="/vegetables/new" class="add-button">+</a>
+      <a href="/<%= I18n.locale %>/vegetables/new" class="add-button">+</a>
     </div>
     
     <div class="card-body">
@@ -39,7 +39,7 @@
         <div class="card nested-card">
           <div class="card-body">
             <h3>
-              <a href="/vegetables/<%= vegetable.id %>">
+              <a href="/<%= I18n.locale %>/vegetables/<%= vegetable.id %>">
                 <%= vegetable.name %>
               </a>
             </h3>
@@ -50,7 +50,7 @@
         </div>
       <% end %>
     <% else %>
-      <p><%= t('users.show.no_veggies') %> <a href="/vegetables/new"><%= t('users.show.create_now') %></a>.</p>
+      <p><%= t('users.show.no_veggies') %> <a href="/<%= I18n.locale %>/vegetables/new"><%= t('users.show.create_now') %></a>.</p>
     <% end %>
   </section>
 </div>

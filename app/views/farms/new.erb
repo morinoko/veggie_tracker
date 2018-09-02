@@ -4,7 +4,7 @@
   </div>
   
   <div class="card-body">
-    <form method="POST" action="/farms">
+    <form method="POST" action="/<%= I18n.locale %>/farms">
       <div class="form-group">
     		<label for="name"><%= t('farms.form.name') %></label>
     		<input type="text" id="name" name="name" class="form-control">

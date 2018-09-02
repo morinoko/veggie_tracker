@@ -10,10 +10,10 @@
             <% @user.this_months_vegetables.each do |vegetable| %>
               <div class="card nested-card">
                 <div class="card-body">
-                  <h2><a href="/vegetables/<%= vegetable.id %>"><%= vegetable.name %></a></h2>
+                  <h2><a href="/<%= I18n.locale %>/vegetables/<%= vegetable.id %>"><%= vegetable.name %></a></h2>
                   <span class="card-meta">
                     <% vegetable.farms.each do |farm| %>
-                      <a href="/farms/<%= farm.id %>/<%= farm.slug %>"><%= farm.name %></a><%= ' | ' unless farm == vegetable.farms.last %>
+                      <a href="/<%= I18n.locale %>/farms/<%= farm.id %>/<%= farm.slug %>"><%= farm.name %></a><%= ' | ' unless farm == vegetable.farms.last %>
                     <% end %>
                   </span>
                 </div>
@@ -23,11 +23,11 @@
           <p><%= t('this_month.no_veggies') %></p>
         <% end %>
         
-        <a href="/vegetables/new" class="add-link">+ <%= t('this_month.add_veggie') %></a>
+        <a href="/<%= I18n.locale %>/vegetables/new" class="add-link">+ <%= t('this_month.add_veggie') %></a>
       </div>
       
       <div class="card-footer">
-        <a href="/users/<%= @user.slug %>" class="btn btn-info"><%= t('this_month.dashboard_link') %></a>
+        <a href="/<%= I18n.locale %>/users/<%= @user.slug %>" class="btn btn-info"><%= t('this_month.dashboard_link') %></a>
       </div>
     </div>
   </div>

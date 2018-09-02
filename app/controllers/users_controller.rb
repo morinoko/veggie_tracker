@@ -45,8 +45,7 @@ class UsersController < ApplicationController
 
     if @user && @user.authenticate(params[:password])
       session[:user_id] = @user.id
-      flash[:notice] = "Welcome, #{@user.username}!"
-
+      
       redirect to "/#{I18n.locale}/users/#{@user.slug}"
     else
       flash[:notice] = t('notices.login.param_error')

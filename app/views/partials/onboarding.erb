@@ -2,6 +2,6 @@
   <h1><%= t('onboarding.welcome') %></h1>
   <p class="lead"><%= t('onboarding.catchphrase') %></p>
   <hr class="my-4">
-  <a class="login-button btn btn-outline-success btn-lg" href="/signup" role="button"><%= t('onboarding.signup_button') %></a>
-  <p><small><%= t('onboarding.have_account') %> <a href="/login"><%= t('onboarding.login_now') %></a>.<small></p>
+  <a class="login-button btn btn-outline-success btn-lg" href="/<%= I18n.locale %>/signup" role="button"><%= t('onboarding.signup_button') %></a>
+  <p><small><%= t('onboarding.have_account') %> <a href="/<%= I18n.locale %>/login"><%= t('onboarding.login_now') %></a>.<small></p>
 </div>
