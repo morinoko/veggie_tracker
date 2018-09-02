@@ -12,6 +12,7 @@ en:
   onboarding: 
     welcome: Welcome to Veggie Tracker!
     catchphrase: Veggie Tracker is a simple way to keep track of which vegetables you need to plant every month.
+    signup_button: Sign up
     have_account: Have an account?
     login_now: Login now
   this_month:

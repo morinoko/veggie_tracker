@@ -12,6 +12,7 @@ ja:
   onboarding: 
     welcome: ようこそ！ベジトラッカーへ!
     catchphrase: その月に植える予定の野菜をお知らせしてくれるシンプルなアプリです。
+    signup_button: サインアップ
     have_account: 既にアカウントをお持ちの方：
     login_now: こちらでログイン
   this_month:
@@ -64,7 +65,7 @@ ja:
     login_required: それをするにはログインが必要です！
     not_authorized: それはできません！
     missing_fields: 全部の項目を入力してください。
-      signup:
+    signup:
       welcome: アカウントができました！ようこそ、 %{username}！
       email_taken: このメールアドレスは既に使われています。
       name_taken: このユーザー名は既に使われています。
