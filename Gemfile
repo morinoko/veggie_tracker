@@ -12,9 +12,9 @@ gem 'require_all'
 gem 'pry'
 gem 'tux'
 gem 'i18n'
+gem 'dotenv'
 
 group :development, :test do
-  gem 'dotenv'
   gem 'sqlite3'
 end
 
