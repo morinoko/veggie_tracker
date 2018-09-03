@@ -14,6 +14,7 @@ gem 'tux'
 gem 'i18n'
 
 group :development, :test do
+  gem 'dotenv'
   gem 'sqlite3'
 end
 
