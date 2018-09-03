@@ -4,7 +4,7 @@ class UsersController < ApplicationController
     if logged_in?
       redirect to "/#{I18n.locale}/"
     else
-      erb :'registration/signup'
+      erb :'registration/signup', :layout => :'narrow-layout'
     end
   end
 
@@ -36,7 +36,7 @@ class UsersController < ApplicationController
     if logged_in?
       redirect to "/#{I18n.locale}/users/#{current_user.slug}"
     else
-      erb :'sessions/login'
+      erb :'sessions/login', :layout => :'narrow-layout'
     end
   end
   

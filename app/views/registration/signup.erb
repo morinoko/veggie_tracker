@@ -1,25 +1,21 @@
-<div class="row justify-content-center">
-  <div id="signup-form" class="col-12 col-lg-8">
-    <div class="jumbotron">
-      <h1><%= t('signup.title') %></h1>
-      <form action="/<%= I18n.locale %>/signup" method="POST">
-      	<div class="form-group">
-      		<label for="username"><%= t('username') %></label>
-      		<input type="text" id="username" name="username" class="form-control">
-      	</div>
-      	
-      	<div class="form-group">
-      		<label for="email"><%= t('email') %></label>
-      		<input type="email" id="email" name="email" class="form-control">
-      	</div>
-      	
-      	<div class="form-group">
-      		<label for="password"><%= t('password') %></label>
-      		<input type="password" id="password" name="password" class="form-control">
-      	</div>
-      	
-      	<button type="submit" class="btn btn-primary"><%= t('signup.submit') %></button>
-      </form>
-    </div>
-  </div>
+<div id="signup-form" class="jumbotron">
+  <h1><%= t('signup.title') %></h1>
+  <form action="/<%= I18n.locale %>/signup" method="POST">
+  	<div class="form-group">
+  		<label for="username"><%= t('username') %></label>
+  		<input type="text" id="username" name="username" class="form-control">
+  	</div>
+  	
+  	<div class="form-group">
+  		<label for="email"><%= t('email') %></label>
+  		<input type="email" id="email" name="email" class="form-control">
+  	</div>
+  	
+  	<div class="form-group">
+  		<label for="password"><%= t('password') %></label>
+  		<input type="password" id="password" name="password" class="form-control">
+  	</div>
+  	
+  	<button type="submit" class="btn btn-primary"><%= t('signup.submit') %></button>
+  </form>
 </div>

@@ -88,8 +88,8 @@ section.card,
 }
 
 /* Sign up and Login */
-#signup-form .jumbotron,
-#login-form .jumbotron {
+#signup-form.jumbotron,
+#login-form.jumbotron {
   background-color: white;
   margin-top: 3em;
 }
