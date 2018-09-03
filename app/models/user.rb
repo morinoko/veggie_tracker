@@ -19,12 +19,4 @@ class User < ActiveRecord::Base
     slug = CGI.escape(slug)
     User.find { |user| user.slug == slug }
   end
-  
-  def this_months_vegetables
-    this_month = Time.now.month
-    
-    self.vegetables.select do |vegetable|
-      vegetable.planting_season.include?(this_month)
-    end.uniq
-  end
 end

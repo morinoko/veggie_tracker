@@ -9,7 +9,7 @@
         
         <% if @user.farms.any? %>
           <% if @user.vegetables.any? %>
-            <% @user.this_months_vegetables.each do |vegetable| %>
+            <% @vegetables_to_plant.each do |vegetable| %>
               <div class="card nested-card">
                 <div class="card-body">
                   <h2><a href="/<%= I18n.locale %>/vegetables/<%= vegetable.id %>"><%= vegetable.name %></a></h2>

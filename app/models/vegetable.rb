@@ -19,6 +19,17 @@ class Vegetable < ActiveRecord::Base
   def planting_season_month_names
     planting_season.values
   end
+  
+  def plant_this_month?
+    this_month = Time.now.month
+    self.planting_season.include?(this_month)
+  end
+  
+  def self.this_months_vegetables_for(user)
+    user.vegetables.select do |vegetable|
+      vegetable.plant_this_month?
+    end.uniq
+  end
 	
 	private
 	

@@ -67,6 +67,7 @@ class UsersController < ApplicationController
     @user = User.find_by_slug(params[:slug])
     
     if @user
+      @vegetables_to_plant = Vegetable.this_months_vegetables_for(@user)
       erb :'users/show'
     else
       flash[:notice] = t('notices.not_found.user')
