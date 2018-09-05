@@ -7,6 +7,9 @@ ja:
   username: ユーザー名
   email: メールアドレス
   password: パスワード
+  login_form:
+    need_account: アカウントをお持ちじゃない方：
+    create_now: こちらで登録
   signup: 
     title: アカウントを作る
     submit: サインアップ

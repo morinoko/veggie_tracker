@@ -7,6 +7,9 @@ en:
   username: Username
   email: Email
   password: Password
+  login_form:
+    need_account: Don't have an account?
+    create_now: Create one now
   signup:
     title: Sign up for Veggie Tracker
     submit: Sign up

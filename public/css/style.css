@@ -94,6 +94,11 @@ section.card,
   margin-top: 3em;
 }
 
+#signup-form button,
+#login-form button {
+  margin-bottom: 0.5em;
+}
+
 /* Dashboard */
 .months {
   margin-bottom: 0;
