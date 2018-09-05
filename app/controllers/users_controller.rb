@@ -2,7 +2,8 @@ class UsersController < ApplicationController
   
   get '/:locale/signup' do
     if logged_in?
-      redirect to "/#{I18n.locale}/"
+      @user = current_user
+      redirect to "/#{I18n.locale}/users/#{@user.slug}"
     else
       erb :'registration/signup', :layout => :'narrow-layout'
     end

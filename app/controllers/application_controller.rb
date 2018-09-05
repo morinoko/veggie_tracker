@@ -29,7 +29,8 @@ class ApplicationController < Sinatra::Base
   	
   	if logged_in?
     	@user = current_user
-    	@vegetables_to_plant = Vegetable.this_months_vegetables_for(@user)
+    	    	
+    	redirect to "/#{I18n.locale}/users/#{@user.slug}"
     end
     
 		erb :index
