@@ -1,89 +1,13 @@
 <div id="dashboard">
   <section id="this-month" class="card">
-    <div class="card-header">
-      <h1><%= t('this_month.title', this_month: Time.now.month) %></h2>
-    </div>
-    
-    <div class="card-body">
-      <% if @user.farms.any? %>
-        <% if @user.vegetables.any? %>
-          <% @vegetables_to_plant.each do |vegetable| %>
-            <div class="card nested-card">
-              <div class="card-body">
-                <h2><a href="/<%= I18n.locale %>/vegetables/<%= vegetable.id %>"><%= vegetable.name %></a></h2>
-                <span class="card-meta">
-                  <% vegetable.farms.each do |farm| %>
-                    <a href="/<%= I18n.locale %>/farms/<%= farm.id %>/<%= farm.slug %>"><%= farm.name %></a><%= ' | ' unless farm == vegetable.farms.last %>
-                  <% end %>
-                </span>
-              </div>
-            </div>
-          <% end %>
-        <% else  %>
-          <p><%= t('this_month.no_veggies') %></p>
-          
-          <a href="/<%= I18n.locale %>/vegetables/new" class="add-link">+ <%= t('this_month.add_veggie') %></a>
-        <% end %>
-      <% else  %>
-        <p><%= t('this_month.no_farms') %></p>
-        
-        <a href="/<%= I18n.locale %>/farms/new" class="add-link">+ <%= t('this_month.add_farm') %></a>
-      <% end %>
-    </div>
+    <%= erb :'users/partials/this-month' %>
   </section>
   
   <section id="farms" class="card">
-    <div class="card-header">
-      <h2><%= t('users.show.subtitle.farms') %></h2>
-      <a href="/<%= I18n.locale %>/farms/new" class="add-button">+</a>
-    </div>
-    
-    <div class="card-body">
-      <% if @user.farms.any? %>
-        <% @user.farms.each do |farm| %>
-          <div class="card nested-card">
-            <div class="card-body">
-              <h3>
-                <a href="/<%= I18n.locale %>/farms/<%= farm.id %>/<%= farm.slug %>"><%= farm.name %></a>
-              </h3>
-              <ul>
-              <% farm.vegetables.each do |vegetable| %>
-                <li><%= vegetable.name %></li>
-              <% end %>
-              </ul>
-            </div>
-          </div>
-        <% end %>
-      <% else %>
-        <p><%= t('users.show.no_farms') %> <a href="/<%= I18n.locale %>/farms/new"><%= t('users.show.create_now') %></a></p>
-      <% end %>
-    </div>
+    <%= erb :'users/partials/farm-list' %>
   </section>
   
   <section id="vegetables" class="card">
-    <div class="card-header">
-      <h2><%= t('users.show.subtitle.veggies') %></h2>
-      <a href="/<%= I18n.locale %>/vegetables/new" class="add-button">+</a>
-    </div>
-    
-    <div class="card-body">
-    <% if @user.vegetables.any? %>
-      <% @user.vegetables.uniq.each do |vegetable| %>
-        <div class="card nested-card">
-          <div class="card-body">
-            <h3>
-              <a href="/<%= I18n.locale %>/vegetables/<%= vegetable.id %>">
-                <%= vegetable.name %>
-              </a>
-            </h3>
-            <p class="months">
-              <%= vegetable.planting_season_month_names.join(", ") %>
-            </p>
-          </div>
-        </div>
-      <% end %>
-    <% else %>
-      <p><%= t('users.show.no_veggies') %> <a href="/<%= I18n.locale %>/vegetables/new"><%= t('users.show.create_now') %></a></p>
-    <% end %>
+    <%= erb :'users/partials/vegetable-list' %>
   </section>
 </div>

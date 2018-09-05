@@ -1,0 +1,24 @@
+<div class="card-header">
+  <h2><%= t('users.show.subtitle.veggies') %></h2>
+  <a href="/<%= I18n.locale %>/vegetables/new" class="add-button">+</a>
+</div>
+
+<div class="card-body">
+<% if @user.vegetables.any? %>
+  <% @user.vegetables.uniq.each do |vegetable| %>
+    <div class="card nested-card">
+      <div class="card-body">
+        <h3>
+          <a href="/<%= I18n.locale %>/vegetables/<%= vegetable.id %>">
+            <%= vegetable.name %>
+          </a>
+        </h3>
+        <p class="months">
+          <%= vegetable.planting_season_month_names.join(", ") %>
+        </p>
+      </div>
+    </div>
+  <% end %>
+<% else %>
+  <p><%= t('users.show.no_veggies') %> <a href="/<%= I18n.locale %>/vegetables/new"><%= t('users.show.create_now') %></a></p>
+<% end %>

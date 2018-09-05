@@ -1,0 +1,25 @@
+<div class="card-header">
+  <h2><%= t('users.show.subtitle.farms') %></h2>
+  <a href="/<%= I18n.locale %>/farms/new" class="add-button">+</a>
+</div>
+
+<div class="card-body">
+  <% if @user.farms.any? %>
+    <% @user.farms.each do |farm| %>
+      <div class="card nested-card">
+        <div class="card-body">
+          <h3>
+            <a href="/<%= I18n.locale %>/farms/<%= farm.id %>/<%= farm.slug %>"><%= farm.name %></a>
+          </h3>
+          <ul>
+          <% farm.vegetables.each do |vegetable| %>
+            <li><%= vegetable.name %></li>
+          <% end %>
+          </ul>
+        </div>
+      </div>
+    <% end %>
+  <% else %>
+    <p><%= t('users.show.no_farms') %> <a href="/<%= I18n.locale %>/farms/new"><%= t('users.show.create_now') %></a></p>
+  <% end %>
+</div>
