@@ -47,3 +47,6 @@ You can make a request or report a bug by creating an issue. Or write your own c
 ### Tests
 
 This app has a simple test suite that uses Rspec. Tests can be run with `rspec spec`.
+
+## License
+Veggie Tracker is available as open source under the terms of the [MIT License](https://github.com/morinoko/veggie_tracker/blob/master/LICENSE).
