@@ -57,5 +57,9 @@ class ApplicationController < Sinatra::Base
   		I18n.l(*args)
     end
 		
+		def this_month
+  		month = Time.now.month
+  		I18n.t('date.month_names')[month]
+    end
 	end
 end

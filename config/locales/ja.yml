@@ -20,7 +20,7 @@ ja:
     have_account: 既にアカウントをお持ちの方：
     login_now: こちらでログイン
   this_month:
-    title: 今月植える野菜
+    title: "%{month}に植える野菜"
     no_farms: ファームはまだありません！
     add_farm: ファームを追加する
     no_veggies: 今月は植える野菜がない！リラックスできますね。

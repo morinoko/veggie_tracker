@@ -20,7 +20,7 @@ en:
     have_account: Have an account?
     login_now: Login now
   this_month:
-    title: Veggies to plant this month
+    title: Veggies to plant in %{month}
     no_farms: You don't have any farms yet!
     add_farm: Add a farm now.
     no_veggies: There are no veggies to plant this month! Go and relax ;)
