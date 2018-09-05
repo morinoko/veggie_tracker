@@ -71,6 +71,7 @@ en:
     month_names: [~, "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
     abbr_month_names: [~, "Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
   notices:
+    general_error: Oops, something went wrong! Please try again.
     login_required: You need to be logged in to do that!
     not_authorized: You aren't permitted to do that!
     missing_fields: Please fill in all the fields.

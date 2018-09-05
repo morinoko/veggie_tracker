@@ -1,6 +1,7 @@
 class Vegetable < ActiveRecord::Base
   has_many :farm_vegetables
 	has_many :farms, through: :farm_vegetables
+	belongs_to :user
 	
 	def planting_season
   	months = {}
@@ -10,10 +11,6 @@ class Vegetable < ActiveRecord::Base
     end
     
     months
-  end
-	
-	def user
-  	self.farms.first.user
   end
   
   def planting_season_month_names
