@@ -1,0 +1,20 @@
+<section id="vegetable-by-month" class="card">
+  <div class="card-header">
+    <h1><%= t('this_month.title', month: month_name(@month)) %></h2>
+  </div>
+  
+  <div class="card-body">
+    <% @vegetables_to_plant.each do |vegetable| %>
+      <div class="card nested-card">
+        <div class="card-body">
+          <h2><a href="/<%= I18n.locale %>/vegetables/<%= vegetable.id %>"><%= vegetable.name %></a></h2>
+          <span class="card-meta">
+            <% vegetable.farms.each do |farm| %>
+              <a href="/<%= I18n.locale %>/farms/<%= farm.id %>/<%= farm.slug %>"><%= farm.name %></a><%= ' | ' unless farm == vegetable.farms.last %>
+            <% end %>
+          </span>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</section>

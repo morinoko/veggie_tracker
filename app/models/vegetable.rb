@@ -27,6 +27,16 @@ class Vegetable < ActiveRecord::Base
       vegetable.plant_this_month?
     end.uniq
   end
+  
+  def plant_in_month?(month)
+    self.planting_season.include?(month)
+  end
+  
+  def self.vegetables_for_month(month:, user:)
+    user.vegetables.select do |vegetable|
+      vegetable.plant_in_month?(month)
+    end.uniq
+  end
 	
 	private
 	

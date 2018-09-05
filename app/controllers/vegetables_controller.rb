@@ -98,4 +98,12 @@ class VegetablesController < ApplicationController
     end
   end
   
+  get '/:locale/vegetables/months/:month' do
+    @user = current_user
+    @month = params[:month].to_i
+    @vegetables_to_plant = Vegetable.vegetables_for_month(month: @month, user: @user)
+    
+    erb :'vegetables/months'
+  end
+  
 end
