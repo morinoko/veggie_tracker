@@ -4,17 +4,22 @@
   </div>
   
   <div class="card-body">
-    <% @vegetables_to_plant.each do |vegetable| %>
-      <div class="card nested-card">
-        <div class="card-body">
-          <h2><a href="/<%= I18n.locale %>/vegetables/<%= vegetable.id %>"><%= vegetable.name %></a></h2>
-          <span class="card-meta">
-            <% vegetable.farms.each do |farm| %>
-              <a href="/<%= I18n.locale %>/farms/<%= farm.id %>/<%= farm.slug %>"><%= farm.name %></a><%= ' | ' unless farm == vegetable.farms.last %>
-            <% end %>
-          </span>
-        </div>
-      </div>
+    <% if @vegetables_to_plant.count > 0 %>
+      <% @vegetables_to_plant.each do |vegetable| %>
+          <div class="card nested-card">
+            <div class="card-body">
+              <h2><a href="/<%= I18n.locale %>/vegetables/<%= vegetable.id %>"><%= vegetable.name %></a></h2>
+              <span class="card-meta">
+                <% vegetable.farms.each do |farm| %>
+                  <a href="/<%= I18n.locale %>/farms/<%= farm.id %>/<%= farm.slug %>"><%= farm.name %></a><%= ' | ' unless farm == vegetable.farms.last %>
+                <% end %>
+              </span>
+            </div>
+          </div>
+      <% end %>
+    <% else %>
+        <p><%= t('vegetables.months.no_veggies') %></p>
+        <a class="add-link" href="/<%= I18n.locale %>/vegetables/new"><%= t('vegetables.months.add_now') %></a>
     <% end %>
   </div>
   
