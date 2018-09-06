@@ -120,6 +120,29 @@ section.card,
 }
 
 /* Vegetables by Month */
+#vegetables-by-month-index h1 {
+  color: #3e3e3e;
+}
+
+#vegetables-by-month-index h2 a {
+  color: #1e5d1d;
+}
+
+#vegetables-by-month-index h2 a:hover {
+  color: #4caf50;
+}
+
+#vegetables-by-month-index a.add-link {
+  color: #277d25;
+}
+#vegetables-by-month-index a.add-link:hover {
+  text-decoration: underline;
+}
+  
+#vegetables-by-month-index .card {
+  margin-bottom: 2em;
+}
+
 #vegetables-by-month .card-footer {
   display: flex;
   justify-content: space-between;
