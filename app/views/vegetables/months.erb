@@ -1,4 +1,4 @@
-<section id="vegetable-by-month" class="card">
+<section id="vegetables-by-month" class="card">
   <div class="card-header">
     <h1><%= t('this_month.title', month: month_name(@month)) %></h2>
   </div>
@@ -16,5 +16,14 @@
         </div>
       </div>
     <% end %>
+  </div>
+  
+  <div class="card-footer">
+    <a class="btn btn-info btn-sm" href="/<%= I18n.locale %>/vegetables/months/<%= previous_month_number(@month) %>">
+      << <%= previous_month_name(@month) %>
+    </a>
+    <a class="btn btn-info btn-sm" href="/<%= I18n.locale %>/vegetables/months/<%= next_month_number(@month) %>">
+      <%= next_month_name(@month) %> >>
+    </a>
   </div>
 </section>

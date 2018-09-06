@@ -119,6 +119,12 @@ section.card,
   text-align: center;
 }
 
+/* Vegetables by Month */
+#vegetables-by-month .card-footer {
+  display: flex;
+  justify-content: space-between;
+}
+
 /* Forms */
 .card-footer .form-group {
   margin-bottom: 0;

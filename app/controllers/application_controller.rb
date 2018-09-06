@@ -65,5 +65,38 @@ class ApplicationController < Sinatra::Base
     def month_name(month)
       I18n.t('date.month_names')[month]
     end
+    
+    def next_month_number(month)
+      if month == 12
+        1
+      else
+        month + 1
+      end
+    end
+    
+    def previous_month_number(month)
+      if month == 1
+        12
+      else
+        month - 1
+      end
+    end
+
+    
+    def next_month_name(month)
+      if month == 12
+        I18n.t('date.month_names')[1]
+      else
+        I18n.t('date.month_names')[month + 1]
+      end
+    end
+    
+    def previous_month_name(month)
+      if month == 1
+        I18n.t('date.month_names')[12]
+      else
+        I18n.t('date.month_names')[month - 1]
+      end
+    end
 	end
 end
