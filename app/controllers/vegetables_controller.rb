@@ -98,6 +98,18 @@ class VegetablesController < ApplicationController
     end
   end
   
+   get '/:locale/vegetables/months/' do
+    @user = current_user
+    @vegetables_for_each_month = {}
+    
+    months = (1..12).to_a
+    months.each do |month|
+      @vegetables_for_each_month[month] = Vegetable.vegetables_for_month(month: month, user: @user)
+    end
+    
+    erb :'vegetables/months-index'
+  end
+  
   get '/:locale/vegetables/months/:month' do
     @user = current_user
     @month = params[:month].to_i

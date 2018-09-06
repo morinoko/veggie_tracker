@@ -1,0 +1,29 @@
+<section id="vegetables-by-month" class="card">
+  <% @vegetables_for_each_month.each do |month, vegetables| %>
+
+    <div class="card-header">
+      <h1><%= month_name(month) %></h2>
+    </div>
+    
+    <div class="card-body">
+      <% if vegetables.count > 0 %>
+        <% vegetables.each do |vegetable| %>
+          <div class="card nested-card">
+            <div class="card-body">
+              <h2><a href="/<%= I18n.locale %>/vegetables/<%= vegetable.id %>"><%= vegetable.name %></a></h2>
+              <span class="card-meta">
+                <% vegetable.farms.each do |farm| %>
+                  <a href="/<%= I18n.locale %>/farms/<%= farm.id %>/<%= farm.slug %>"><%= farm.name %></a><%= ' | ' unless farm == vegetable.farms.last %>
+                <% end %>
+              </span>
+            </div>
+          </div>
+        <% end %>
+      <% else %>  
+        <p><%= t('vegetables.months.no_veggies') %></p>
+        <a href="/<%= I18n.locale %>/vegetables/new"><%= t('vegetables.months.add_now') %></a>
+      <% end %>
+    </div>
+  <% end %>
+  
+</section>

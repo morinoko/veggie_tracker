@@ -81,7 +81,6 @@ class ApplicationController < Sinatra::Base
         month - 1
       end
     end
-
     
     def next_month_name(month)
       if month == 12
