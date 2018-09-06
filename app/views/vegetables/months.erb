@@ -24,11 +24,17 @@
   </div>
   
   <div class="card-footer">
-    <a class="btn btn-info btn-sm" href="/<%= I18n.locale %>/vegetables/months/<%= previous_month_number(@month) %>">
-      << <%= previous_month_name(@month) %>
-    </a>
-    <a class="btn btn-info btn-sm" href="/<%= I18n.locale %>/vegetables/months/<%= next_month_number(@month) %>">
-      <%= next_month_name(@month) %> >>
-    </a>
+    <div class="footer-nav">
+      <a class="btn btn-info btn-sm" href="/<%= I18n.locale %>/vegetables/months/<%= previous_month_number(@month) %>">
+        << <%= previous_month_name(@month) %>
+      </a>
+      <a class="btn btn-info btn-sm" href="/<%= I18n.locale %>/vegetables/months/<%= next_month_number(@month) %>">
+        <%= next_month_name(@month) %> >>
+      </a>
+    </div>
+    <hr>
+    <div>
+      <a class="btn btn-outline-info" href="/<%= I18n.locale %>/vegetables/months"><%= t('vegetables.months.see_all') %></a>
+    </div>
   </div>
 </section>

@@ -69,6 +69,7 @@ ja:
         submit: 野菜を保存
       months:
         title: 毎月の野菜
+        see_all: 全ての月を見る
         no_veggies: この月には、野菜がありません。
         add_now: 野菜を追加する。
   date:

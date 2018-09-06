@@ -144,6 +144,10 @@ section.card,
 }
 
 #vegetables-by-month .card-footer {
+  text-align: center;
+}
+
+#vegetables-by-month .card-footer .footer-nav {
   display: flex;
   justify-content: space-between;
 }
