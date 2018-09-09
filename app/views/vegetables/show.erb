@@ -22,6 +22,8 @@
       <a href="/<%= I18n.locale %>/vegetables/<%= @vegetable.id %>/edit" class="card-link"><%= t('vegetables.show.edit_button') %></a>
     </div>
   <% end %>
-  
-  </div>
 </section>
+
+<div class="below-card">
+  <a class="btn btn-info" href="/<%= I18n.locale %>/vegetables/new"><%= t('vegetables.show.add_another') %></a>
+</div>

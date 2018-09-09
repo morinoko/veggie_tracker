@@ -55,6 +55,7 @@ en:
     show:
       months: Months to plant
       edit_button: Edit veggie
+      add_another: Add another veggie
     form:
       details: Veggie details
       name: Name of vegetable

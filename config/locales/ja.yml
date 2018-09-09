@@ -55,6 +55,7 @@ ja:
     show:
       months: 植える月
       edit_button: 野菜を編集
+      add_another: 野菜を追加する
     form:
       details: 野菜の詳細
       name: 野菜の名前
