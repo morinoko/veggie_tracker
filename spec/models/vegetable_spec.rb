@@ -2,7 +2,7 @@ RSpec.describe 'Vegetable' do
   before do
     @user = User.create(username: "Joe Farmer", email: "joe@aol.com", password: "farmer")
     @farm = Farm.create(name: "Joe's Farm", location: "Ohio", user_id: @user.id)
-    @vegetable = Vegetable.create(name: "Carrots", planting_season: "3 4 5")
+    @vegetable = Vegetable.create(name: "Carrots", planting_season: "3 4 5", user_id: @user.id)
     @farm.vegetables << @vegetable
   end
   
