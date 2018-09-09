@@ -14,7 +14,6 @@ Localized to English and Japanese. You can try the app out here:
  - Japanese: https://veggie-tracker.herokuapp.com/ja/
  
  Future improvements planned:
- - Ability to see vegetables to plant by month (not just this month)
  - Possibly more specific planting seasons, e.g. beginning/middle/end of month and season range.
  - Better design
 
