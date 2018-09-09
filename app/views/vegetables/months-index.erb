@@ -1,5 +1,5 @@
 <section id="vegetables-by-month-index">
-  <h1><%= t('vegetables.months.title') %></h1>
+  <h1><%= t('vegetables.vegetables_by_months.title') %></h1>
   
   <% @vegetables_for_each_month.each do |month, vegetables| %>
     <div class="card">
@@ -22,8 +22,8 @@
             </div>
           <% end %>
         <% else %>  
-          <p><%= t('vegetables.months.no_veggies') %></p>
-          <a class="add-link" href="/<%= I18n.locale %>/vegetables/new"><%= t('vegetables.months.add_now') %></a>
+          <p><%= t('vegetables.vegetables_by_months.no_veggies') %></p>
+          <a class="add-link" href="/<%= I18n.locale %>/vegetables/new"><%= t('vegetables.vegetables_by_months.add_now') %></a>
         <% end %>
       </div>
     </div>

@@ -67,7 +67,7 @@ en:
       edit:
         title: Edit veggie
         submit: Save veggie
-    months:
+    vegetables_by_months:
       title: Vegetables by month
       see_all: See all months
       no_veggies: There are no veggies for this month.
