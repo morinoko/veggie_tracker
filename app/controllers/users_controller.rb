@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  
+
   get '/:locale/signup' do
     if logged_in?
       @user = current_user
@@ -20,11 +20,11 @@ class UsersController < ApplicationController
       redirect to "/#{I18n.locale}/users/#{@user.slug}"
     elsif User.find_by(email: params[:email])
       flash[:notice] = t('notices.signup.email_taken')
-       
+
       redirect to "/#{I18n.locale}/signup"
     elsif User.find_by_slug(@user.slug)
       flash[:notice] = t('notices.signup.name_taken')
-      
+
       redirect to "/#{I18n.locale}/signup"
     else
       flash[:notice] = t('notices.signup.error')
@@ -40,13 +40,13 @@ class UsersController < ApplicationController
       erb :'sessions/login', :layout => :'narrow-layout'
     end
   end
-  
+
   post '/:locale/login' do
     @user = User.find_by(username: params[:username])
 
     if @user && @user.authenticate(params[:password])
       session[:user_id] = @user.id
-      
+
       redirect to "/#{I18n.locale}/users/#{@user.slug}"
     else
       flash[:notice] = t('notices.login.param_error')
@@ -63,16 +63,16 @@ class UsersController < ApplicationController
       redirect to "/#{I18n.locale}/"
     end
   end
-  
+
   get '/:locale/users/:slug' do
     @user = User.find_by_slug(params[:slug])
-    
+
     if @user
       @vegetables_to_plant = Vegetable.this_months_vegetables_for(@user)
       erb :'users/show'
     else
       flash[:notice] = t('notices.not_found.user')
-      
+
       redirect to "/#{I18n.locale}/"
     end
   end
