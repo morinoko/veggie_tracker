@@ -7,13 +7,13 @@
     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
       <div class="navbar-nav">
         <% if logged_in? %>
-        	<a class="nav-item nav-link" href="/<%= I18n.locale %>/users/<%= current_user.slug %>"><%= t('dashboard') %></a>
+          <a class="nav-item nav-link" href="/<%= I18n.locale %>/users/<%= current_user.slug %>"><%= t('dashboard') %></a>
           <a class="nav-item nav-link" href="/<%= I18n.locale %>/logout"><%= t('logout') %></a>
         <% else %>
-        	<a class="nav-item nav-link" href="/<%= I18n.locale %>/signup"><%= t('signup.submit') %></a>
+          <a class="nav-item nav-link" href="/<%= I18n.locale %>/signup"><%= t('signup.submit') %></a>
           <a class="nav-item nav-link" href="/<%= I18n.locale %>/login"><%= t('login') %></a>
         <% end %>
-        
+
         <% if I18n.locale == :en %>
           <a class="nav-item nav-link" href="/ja/"><%= t('japanese') %></a>
         <% else %>

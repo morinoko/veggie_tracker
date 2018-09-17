@@ -17,12 +17,12 @@
     <% else %>
       <p><%= t('farms.show.no_veggies') %></p>
     <% end %>
-    
+
     <% if @farm.user == current_user %>
       <a href="/<%= I18n.locale %>/vegetables/new" class="btn btn-outline-info btn-sm">+ <%= t('farms.show.add_veggie') %></a>
     <% end %>
   </div>
-  
+
   <% if @farm.user == current_user %>
     <div class="card-footer">
       <a href="/<%= I18n.locale %>/farms/<%= @farm.id %>/<%= @farm.slug %>/edit"><%= t('farms.show.edit_button') %></a>

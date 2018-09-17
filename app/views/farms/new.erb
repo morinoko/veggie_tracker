@@ -2,20 +2,20 @@
   <div class="card-header">
     <h1><%= t('farms.form.new.title') %></h1>
   </div>
-  
+
   <div class="card-body">
     <form method="POST" action="/<%= I18n.locale %>/farms">
       <div class="form-group">
-    		<label for="farm[name]"><%= t('farms.form.name') %></label>
-    		<input type="text" id="name" name="farm[name]" class="form-control">
-    	</div>
-    	
-    	<div class="form-group">
-    		<label for="location"><%= t('farms.form.location') %></label>
-    		<input type="text" id="location" name="farm[location]" class="form-control">
-    	</div>
-    	
-    	<button type="submit" id="submit" class="btn btn-info"><%= t('farms.form.new.submit') %></button>
+        <label for="farm[name]"><%= t('farms.form.name') %></label>
+        <input type="text" id="name" name="farm[name]" class="form-control">
+      </div>
+
+      <div class="form-group">
+        <label for="location"><%= t('farms.form.location') %></label>
+        <input type="text" id="location" name="farm[location]" class="form-control">
+      </div>
+
+      <button type="submit" id="submit" class="btn btn-info"><%= t('farms.form.new.submit') %></button>
     </form>
   </div>
 </div>

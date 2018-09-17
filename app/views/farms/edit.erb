@@ -2,31 +2,31 @@
   <div class="card-header">
     <h1><%= t('farms.form.edit.title') %></h1>
   </div>
-  
+
   <div class="card-body">
     <form method="POST" action="/<%= I18n.locale %>/farms/<%= @farm.id %>/<%= @farm.slug %>">
       <input type="hidden" id="hidden" name="_method" value="patch">
       
       <div class="form-group">
-    		<label for="farm[name]"><%= t('farms.form.name') %></label>
-    		<input type="text" id="name" name="farm[name]" class="form-control" value="<%= @farm.name %>">
-    	</div>
-    	
-    	<div class="form-group">
-    		<label for="farm[location]"><%= t('farms.form.location') %></label>
-    		<input type="text" id="location" name="farm[location]" class="form-control" value="<%= @farm.location %>">
-    	</div>
-    	
-    	<button type="submit" id="save" class="btn btn-info"><%= t('farms.form.edit.submit') %></button>
+        <label for="farm[name]"><%= t('farms.form.name') %></label>
+        <input type="text" id="name" name="farm[name]" class="form-control" value="<%= @farm.name %>">
+      </div>
+
+      <div class="form-group">
+        <label for="farm[location]"><%= t('farms.form.location') %></label>
+        <input type="text" id="location" name="farm[location]" class="form-control" value="<%= @farm.location %>">
+    </div>
+
+      <button type="submit" id="save" class="btn btn-info"><%= t('farms.form.edit.submit') %></button>
     </form>
   </div>
-  
+
   <div class="card-footer">
     <form method="POST" action="/<%= I18n.locale %>/farms/<%= @farm.id %>/<%= @farm.slug %>">
       <input type="hidden" id="hidden" name="_method" value="delete">
       <div class="form-group">
-    		<input type="submit" id="delete" class="btn btn-outline-danger btn-sm" value="<%= t('farms.form.delete') %>">
-    	</div>
+        <input type="submit" id="delete" class="btn btn-outline-danger btn-sm" value="<%= t('farms.form.delete') %>">
+      </div>
     </form>
   </div>
 </div>

@@ -16,7 +16,7 @@
     <% end %>
     </ul>
   </div>
-    
+
   <% if current_user == @vegetable.user || @vegetable.farms.first.user = current_user #temp check to account for late addition of user_id to vegetables %>
     <div class="card-footer">
       <a href="/<%= I18n.locale %>/vegetables/<%= @vegetable.id %>/edit" class="card-link"><%= t('vegetables.show.edit_button') %></a>

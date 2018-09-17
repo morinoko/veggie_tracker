@@ -2,7 +2,7 @@
   <div class="card-header">
     <h1><%= t('this_month.title', month: month_name(@month)) %></h2>
   </div>
-  
+
   <div class="card-body">
     <% if @vegetables_to_plant.count > 0 %>
       <% @vegetables_to_plant.each do |vegetable| %>
@@ -22,7 +22,7 @@
         <a class="add-link" href="/<%= I18n.locale %>/vegetables/new"><%= t('vegetables.vegetables_by_months.add_now') %></a>
     <% end %>
   </div>
-  
+
   <div class="card-footer">
     <div class="footer-nav">
       <a class="btn btn-info btn-sm" href="/<%= I18n.locale %>/vegetables/months/<%= previous_month_number(@month) %>">
