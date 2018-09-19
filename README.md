@@ -17,6 +17,7 @@ Localized to English and Japanese. You can try the app out here:
  - Possibly more specific planting seasons, e.g. beginning/middle/end of month and season range.
  - Better design
 
+Video walkthough on Youtube: https://www.youtube.com/watch?v=PTRAOBUQE5Q
 
 ## Contributing
 
