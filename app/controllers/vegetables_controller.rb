@@ -1,23 +1,22 @@
 class VegetablesController < ApplicationController
-
   get '/:locale/vegetables/new' do
     if logged_in?
       @user = current_user
 
       erb :'vegetables/new'
     else
-     flash[:notice] = t('notices.login_required')
+      flash[:notice] = t('notices.login_required')
 
-     redirect to "/#{I18n.locale}/login"
+      redirect to "/#{I18n.locale}/login"
     end
   end
 
   post '/:locale/vegetables' do
-    params[:vegetable][:planting_season] = params[:vegetable][:planting_season].join(" ")
+    params[:vegetable][:planting_season] = params[:vegetable][:planting_season].join(' ')
     @vegetable = Vegetable.new(params[:vegetable])
 
     if @vegetable.save
-      @vegetable.user = current_user 
+      @vegetable.user = current_user
       @vegetable.save
 
       redirect to "/#{I18n.locale}/vegetables/#{@vegetable.id}"
@@ -61,13 +60,13 @@ class VegetablesController < ApplicationController
   end
 
   patch '/:locale/vegetables/:id' do
-    params[:vegetable][:planting_season] = params[:vegetable][:planting_season].join(" ")
+    params[:vegetable][:planting_season] = params[:vegetable][:planting_season].join(' ')
 
     @vegetable = Vegetable.find_by(id: params[:id])
 
     @vegetable.update(params[:vegetable])
 
-    #temp check farms.first.user to account for late addition of user_id to vegetables
+    # temp check farms.first.user to account for late addition of user_id to vegetables
     if @vegetable.user.nil?
       @vegetable.user = current_user
       @vegetable.save
@@ -80,8 +79,8 @@ class VegetablesController < ApplicationController
     if logged_in?
       @vegetable = Vegetable.find_by(id: params[:id])
 
-      #temp check farms.first.user to account for late addition of user_id to vegetables
-      if @vegetable.user == current_user || @vegetable.farms.first.user = current_user 
+      # temp check farms.first.user to account for late addition of user_id to vegetables
+      if @vegetable.user == current_user || @vegetable.farms.first.user == current_user
         @user = current_user
         @vegetable.destroy
 
@@ -97,13 +96,13 @@ class VegetablesController < ApplicationController
       redirect to "/#{I18n.locale}/login"
     end
   end
-  
+
   get '/:locale/vegetables/:id/edit' do
     if logged_in?
       @vegetable = Vegetable.find_by(id: params[:id])
 
-      #temp check farms.first.user to account for late addition of user_id to vegetables
-      if @vegetable.user == current_user || @vegetable.farms.first.user = current_user
+      # temp check farms.first.user to account for late addition of user_id to vegetables
+      if @vegetable.user == current_user || @vegetable.farms.first.user == current_user
         @user = current_user
         erb :'vegetables/edit'
       else

@@ -1,0 +1,44 @@
+require: rubocop-rspec
+
+Rails:
+  Enabled: false
+
+AllCops:
+  TargetRubyVersion: 2.4.1
+
+Bundler/OrderedGems:
+  Enabled: false
+
+Documentation:
+  Enabled: false
+
+Metrics/LineLength:
+  Max: 100
+
+Style/FrozenStringLiteralComment:
+  Enabled: false
+
+Naming/VariableNumber:
+  EnforcedStyle: snake_case
+
+# Allow developers to make choice of performance vs readability in test
+RSpec/MultipleExpectations:
+  Enabled: false
+
+# Don't limit DSL block length
+Metrics/BlockLength:
+  Exclude:
+    - 'spec/**/*_spec.rb'
+
+# Don't limit DSL block length
+RSpec/ExampleLength:
+  Exclude:
+    - 'spec/**/*_spec.rb'
+
+# Ruby does not have a .to_bool method.
+Style/DoubleNegation:
+  Enabled: false
+
+# Do not enforce use of named subjects
+RSpec/NamedSubject:
+   Enabled: false

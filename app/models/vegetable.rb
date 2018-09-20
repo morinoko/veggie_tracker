@@ -19,17 +19,15 @@ class Vegetable < ActiveRecord::Base
 
   def plant_this_month?
     this_month = Time.now.month
-    self.planting_season.include?(this_month)
+    planting_season.include?(this_month)
   end
 
   def self.this_months_vegetables_for(user)
-    user.vegetables.select do |vegetable|
-      vegetable.plant_this_month?
-    end.uniq
+    user.vegetables.select(&:plant_this_month?).uniq
   end
 
   def plant_in_month?(month)
-    self.planting_season.include?(month)
+    planting_season.include?(month)
   end
 
   def self.vegetables_for_month(month:, user:)
@@ -41,7 +39,7 @@ class Vegetable < ActiveRecord::Base
   private
 
   def months_to_integers(data_saved_from_form)
-    data_saved_from_form.split(" ").collect { |month| month.to_i }
+    data_saved_from_form.split(' ').collect(&:to_i)
   end
 
   def localized_months

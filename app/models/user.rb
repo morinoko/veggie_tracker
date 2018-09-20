@@ -11,7 +11,7 @@ class User < ActiveRecord::Base
   validates :password, presence: true
 
   def slug
-    slug = self.username.downcase.gsub(" ", "-").gsub("'", "")
+    slug = username.downcase.tr(' ', '-').delete("'")
     CGI.escape(slug)
   end
 

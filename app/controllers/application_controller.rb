@@ -13,13 +13,13 @@ class ApplicationController < Sinatra::Base
 
     enable :sessions
     set :session_secret, ENV['SESSION_SECRET']
-    
-    use Rack::Flash, :sweep => true
+
+    use Rack::Flash, sweep: true
 
     I18n::Backend::Simple.send(:include, I18n::Backend::Fallbacks)
     I18n.load_path = Dir[File.join('config/locales', '*.yml')]
     I18n.backend.load_translations
-    I18n.available_locales = [:en, :ja]
+    I18n.available_locales = %i[en ja]
     I18n.default_locale = :en
   end
 

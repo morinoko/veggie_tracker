@@ -1,16 +1,17 @@
 class UsersController < ApplicationController
-
   get '/:locale/signup' do
     if logged_in?
       @user = current_user
       redirect to "/#{I18n.locale}/users/#{@user.slug}"
     else
-      erb :'registration/signup', :layout => :'narrow-layout'
+      erb :'registration/signup', layout: :'narrow-layout'
     end
   end
 
   post '/:locale/signup' do
-    @user = User.new(username: params[:username], email: params[:email], password: params[:password])
+    @user = User.new(username: params[:username],
+                     email: params[:email],
+                     password: params[:password])
 
     if @user.save
       flash[:notice] = t('notices.signup.welcome', username: @user.username)
@@ -37,14 +38,14 @@ class UsersController < ApplicationController
     if logged_in?
       redirect to "/#{I18n.locale}/users/#{current_user.slug}"
     else
-      erb :'sessions/login', :layout => :'narrow-layout'
+      erb :'sessions/login', layout: :'narrow-layout'
     end
   end
 
   post '/:locale/login' do
     @user = User.find_by(username: params[:username])
 
-    if @user && @user.authenticate(params[:password])
+    if @user&.authenticate(params[:password])
       session[:user_id] = @user.id
 
       redirect to "/#{I18n.locale}/users/#{@user.slug}"
@@ -56,12 +57,8 @@ class UsersController < ApplicationController
   end
 
   get '/:locale/logout' do
-    if logged_in?
-      session.destroy
-      redirect to "/#{I18n.locale}/"
-    else
-      redirect to "/#{I18n.locale}/"
-    end
+    session.destroy if logged_in?
+    redirect to "/#{I18n.locale}/"
   end
 
   get '/:locale/users/:slug' do

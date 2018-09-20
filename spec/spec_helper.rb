@@ -13,14 +13,16 @@ ActiveRecord::Base.logger = nil
 
 module RSpecMixin
   include Rack::Test::Methods
-  def app() described_class end
+  def app
+    described_class
+  end
 end
 
 RSpec.configure do |config|
   config.include RSpecMixin
   config.include Capybara::DSL
   DatabaseCleaner.strategy = :truncation
-  
+
   config.before do
     DatabaseCleaner.clean
   end
@@ -30,8 +32,8 @@ RSpec.configure do |config|
   end
 
   config.order = 'default'
-  
-  #RSpec presets
+
+  # RSpec presets
   config.expect_with :rspec do |expectations|
     expectations.include_chain_clauses_in_custom_matcher_descriptions = true
   end

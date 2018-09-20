@@ -1,5 +1,4 @@
 class FarmsController < ApplicationController
-
   get '/:locale/farms/new' do
     if logged_in?
       erb :'farms/new'
@@ -75,5 +74,4 @@ class FarmsController < ApplicationController
       redirect to "/#{I18n.locale}/login"
     end
   end
-  
 end

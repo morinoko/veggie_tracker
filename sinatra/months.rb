@@ -3,8 +3,8 @@ require 'sinatra/base'
 module Sinatra
   module Months
     def this_month
-  		month = Time.now.month
-  		I18n.t('date.month_names')[month]
+      month = Time.now.month
+      I18n.t('date.month_names')[month]
     end
 
     def month_name(month)
