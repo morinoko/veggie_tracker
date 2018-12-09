@@ -9,7 +9,7 @@ class Farm < ActiveRecord::Base
   validates :location, presence: true
 
   def slug
-    slug = name.downcase.gsub(" ", "-").gsub("'", "")
+    slug = name.downcase.tr(' ', '-').delete("'")
     CGI.escape(slug)
   end
 end
