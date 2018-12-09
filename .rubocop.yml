@@ -5,6 +5,8 @@ Rails:
 
 AllCops:
   TargetRubyVersion: 2.4.1
+  Exclude:
+    - 'db/**/*'
 
 Bundler/OrderedGems:
   Enabled: false
